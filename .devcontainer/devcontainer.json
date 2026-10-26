@@ -1,0 +1,21 @@
+{
+  "name": "Youth AI Lab — class chatbots with Open WebUI",
+  // Même image que le kit de l'atelier (Docker, commande openwebui), en mode classe :
+  // Open WebUI avec comptes, à ouvrir aux étudiants le temps d'un cours (openwebui share).
+  // Tag épinglé, jamais `latest` : voir facilitator/SETUP.md du dépôt source (yal-workshop).
+  "image": "ghcr.io/youth-ai-lab/yal-workshop-devcontainer:2026.10.20",
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "WORKSHOP_HOME": "${containerWorkspaceFolder}",
+    "OPENWEBUI_MODE": "class"
+  },
+  // Open WebUI occupe environ 1,2 Go : 8 Go de mémoire (machine à 2 cœurs, celle par défaut).
+  "hostRequirements": { "cpus": 2, "memory": "8gb" },
+  // La commande affiche l'adresse quand tout est prêt (pas d'onglet ouvert avant).
+  "portsAttributes": {
+    "3000": { "label": "Open WebUI", "onAutoForward": "silent" }
+  },
+  "customizations": {
+    "vscode": { "extensions": ["mathematic.vscode-pdf"] }
+  }
+}

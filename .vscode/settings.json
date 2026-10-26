@@ -1,0 +1,6 @@
+{
+  // Pas de panneau de chat à droite ni de fonctions Copilot : les chatbots de ce guide sont dans
+  // Open WebUI ; le chat de VS Code prêterait à confusion.
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "chat.disableAIFeatures": true
+}
