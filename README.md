@@ -228,57 +228,169 @@ instructions on your computer.
 
 ## Part 2 - Build a chatbot
 
-A chatbot in Open WebUI has two parts, like in most chatbot tools: **knowledge** (your documents)
-and **instructions** (who it is, what it does, what it refuses). You create the knowledge first,
-then the chatbot that uses it.
+Before you click anywhere, it helps to know what you are building, and what happens when a young
+person asks your chatbot a question.
 
-### Step 4 - Your documents (knowledge)
+### What a chatbot is made of
+
+In Open WebUI, a chatbot is made of three parts:
+
+- a **base model**: the AI model that writes the answers, here Claude (`claude-sonnet-5-5` or the
+  cheaper `claude-haiku-5-5`). On its own, it knows a lot about everything, but nothing about your
+  group, and it does not know where its knowledge comes from;
+- **instructions** (Open WebUI calls them the *System Prompt*): a text you write once, that tells
+  the base model who it is for this group, what it does, how it helps, and what it refuses;
+- **knowledge**: your documents, gathered in a *knowledge base*.
+
+Open WebUI calls the result a **model**, which can be confusing: in this guide, we say
+**chatbot**. A chatbot is your instructions and your documents, on top of a base model.
+
+```mermaid
+flowchart LR
+    Q["A participant's question"] --> C
+    subgraph C["Your chatbot"]
+        I["Instructions<br/>(System Prompt)"]
+        M["Base model<br/>(Claude)"]
+    end
+    C -- "searches" --> K[("Knowledge<br/>your documents")]
+    K -- "passages found" --> C
+    C --> A["Answer, with its sources"]
+```
+
+**What happens at each question.** The participant's question is sent to Claude together with
+your instructions: Claude reads them before every conversation, the participant never sees them,
+and cannot change them. Claude does not read all your documents each time. It **searches** them,
+like you would: it looks for passages that match the question, searches for a word, and opens the
+document it needs. Then it answers from what it found, and names its sources. This is why the
+quality of a chatbot depends so much on two things you control: clear documents, and clear
+instructions.
+
+You build the chatbot in four steps: gather the documents, write the instructions, create the
+chatbot, and try it.
+
+### Step 4 - Gather your documents (knowledge)
 
 1. In Open WebUI, open **Workspace** (left menu), then **Knowledge**
-2. Click **+**. In **What are you working on?**, write the name of the topic or activity. In **What
-   are you trying to achieve?**, write one sentence, for example "Documents for our summer camp
-   project". Click **Create Knowledge**
+2. Click **+**. In **What are you working on?**, write the name of the topic or activity, for
+   example "Summer camp — fire rules". In **What are you trying to achieve?**, write one sentence,
+   for example "Documents on fire rules for our summer camp". Click **Create Knowledge**
 3. Add your documents (PDF, Word, text) with **Upload files**, and wait until each one appears in
    the list
 
-Open WebUI reads each document and cuts it into short passages, so that the chatbot can search
-them. Documents with one subject each and clear titles work best. Scanned pages without real text
-cannot be read.
+**What Open WebUI does with your documents.** It extracts the text of each file, cuts it into
+passages of about a thousand characters, and builds a search index of these passages. This index
+is computed inside your Open WebUI, by a small model of its own: nothing is sent to Anthropic at
+this step. To check that a document was read, click it in the list: you should see its text. If
+you see nothing, the file has no real text in it (a scan, for example), and the chatbot cannot use
+it.
+
+**Which documents to choose.** The chatbot only knows what is in these documents, so choose them as
+you would choose what to photocopy for the group: a few documents, each on one subject, with clear
+titles. A document of ten pages on everything is harder to search than three short documents on
+one thing each. Prefer the documents you would trust in front of the group: official pages,
+your own activity sheets, the brief of the project.
 
 What you put here, the chatbot can quote, **whatever its instructions say**. So only add documents
 you are allowed to send to an online service, and never a finished model or the expected result of
 a project.
 
-### Step 5 - The chatbot (instructions)
+### Step 5 - Write the instructions
 
-1. In **Workspace**, open **Models**, and click **+**
+The instructions are the heart of your chatbot: they turn a general AI model into a guide for
+**your** group. Writing them from a blank page is hard, so you start from a template, and you
+write it in a file of your Codespace: the editor is more comfortable than the small box of Open
+WebUI, and you keep a copy.
+
+**Choose a template.** In the VS Code tab, open the file list (icon at the top left), then the
+folder `templates/`. Each template is for one kind of use (see [part 4](#part-4---one-chatbot-per-topic-activity-or-project)):
+`topic-assistant.md` to explain a topic, `activity-guide.md` to guide an activity step by step,
+`project-coach.md` to support a project without doing it. Start with `topic-assistant.md`.
+
+**Make your copy.** Right-click on the template → **Copy**, then right-click on the folder
+`templates/` → **Paste**, and rename the copy (right-click → **Rename**), for example
+`camp-fire-rules.md`. To read a file as a page, with its titles and bold words, press
+`Ctrl+Shift+V` in the editor; to write in it, close the page and go back to the file.
+
+**Understand what each section does.** Everything below the line `---` will be sent to Claude.
+Each section answers one question the chatbot would otherwise answer on its own, often badly:
+
+| Section | It tells the chatbot... | Why it matters |
+|---|---|---|
+| **Purpose** | what it is there for | sets its attitude: a guide, not an answer machine |
+| **Context** | the topic, who the participants are, what they do | the same question needs a different answer for a 12-year-old and for an adult |
+| **Tone and format** | how to talk: short, simple, friendly, in which language | young people read on a phone, often in their own language |
+| **Sources** | to answer only from your documents, to name them, and to say "I don't know" | without it, it fills the gaps with what it thinks it knows, and invents |
+| **Scope** | what to do when a question is off the topic | without it, it answers everything |
+| **Progressive help** (activity, project) | to explain first, give more help only if asked again | so that the young people do the thinking |
+| **Never** | the lines it must not cross | protects the group, including against "ignore your rules" |
+| **Example** | one or two model exchanges | an example shows the expected style better than a rule |
+
+**Fill it in.** Replace each `TO BE COMPLETED: …` with your own words, and delete the words
+TO BE COMPLETED and the hint after them. For example, in the **Context** section of
+`topic-assistant.md`:
+
+```
+This chatbot is about "TO BE COMPLETED: topic", for TO BE COMPLETED: who the participants are
+(age, group). It covers TO BE COMPLETED: three to five subjects.
+```
+
+becomes:
+
+```
+This chatbot is about "Wildfire prevention in Charente-Maritime", for young people aged 15 to 17
+from a youth club near La Rochelle, who are preparing their summer camp. It covers the six
+vigilance levels, the sectors of the département, and the rules on fire use near forests.
+```
+
+Be concrete: "young people aged 15 to 17 preparing a camp" helps the chatbot much more than "young
+people". You can change any sentence, add a rule, or delete a section you do not need; keep
+**Sources** and **Never**, they protect the group. You can write in your own language. The folder
+`templates/examples/` has one filled example per template, on this summer camp: open it next to
+yours when you hesitate. When you are done, search your file for "TO BE" (`Ctrl+F`): nothing should
+be left.
+
+> [!TIP]
+> Your copy is kept in the Codespace. To keep it also on your computer, right-click on the file →
+> **Download**.
+
+### Step 6 - Create the chatbot
+
+1. In Open WebUI, in **Workspace**, open **Models**, and click **+**
 2. In **Model Name**, write the name the participants will see. Start it with the topic or the
    group, for example "Summer camp — fire rules"
 3. In **Description**, write one sentence for the participants, for example "Helps you find the
    fire rules for our camp"
-4. In **Base Model (From)**, choose the AI model under your chatbot: `claude-sonnet-5-5` gives the
-   best answers, `claude-haiku-5-5` costs less and suits simple chatbots
-5. In **System Prompt**, paste the instructions of a template (see below)
-6. Under **Knowledge**, click **Select Knowledge** and choose the documents of step 4
+4. In **Base Model (From)**, choose `claude-sonnet-5-5` (the best answers) or `claude-haiku-5-5`
+   (cheaper, for simple chatbots)
+5. In **System Prompt**, paste your instructions: in your file, click at the start of the line just
+   **under the line `---`**, press `Ctrl+Shift+End` (`Cmd+Shift+Down` on a Mac) to select everything
+   down to the end, copy with `Ctrl+C`, and paste into the box with `Ctrl+V`
+6. Under **Knowledge**, click **Select Knowledge** and choose the knowledge base of step 4
 7. Click **Save & Create**, at the bottom
 
-**To fill the System Prompt**, start from a template. In the VS Code tab, open the file list (icon
-at the top left) and the file `templates/topic-assistant.md`. Click at the start of the line just
-**under the line `---`**, press `Ctrl+Shift+End` (`Cmd+Shift+Down` on a Mac) to select everything
-down to the end, copy with `Ctrl+C`, and paste into the **System Prompt** box with `Ctrl+V`. Then
-replace each `TO BE COMPLETED: …` with your own text, deleting these words and the hint after
-them. When you are done, search the box for "TO BE" with `Ctrl+F`: nothing should be left. You
-can write the instructions in your own language.
+Your chatbot now appears in the list of **Workspace → Models**, and in the list at the top left of
+**New Chat**. The other settings of the page can stay as they are: by default, Open WebUI lets the
+chatbot search its knowledge by itself, which is what you want. To change the chatbot later, click
+it in **Workspace → Models**, change what you need, and click **Save & Update**: the next
+conversations use the new version.
 
-### Step 6 - Try it
+### Step 7 - Try it
 
-Click **New Chat**, choose your chatbot at the top left, and ask "Who are you?": the answer shows
-whether it follows your instructions. Then ask three real questions on the topic, and check that
-each answer says which document it used.
+Click **New Chat**, choose your chatbot in the list at the top left, and ask "Who are you?". The
+answer shows whether it follows your instructions: it should present itself as you described it,
+in the tone you asked for. Then ask three real questions on the topic.
 
-Under each answer, a line shows the chatbot's searches in your documents (for example
-"Explored …"), followed by its sources. The chatbot searches by itself: this is Open WebUI's
-default, keep it.
+**Read the answer like a facilitator.** Above the answer, a line such as "Explored
+query_knowledge_files, grep_knowledge_files…" shows the chatbot's searches in your documents: click
+it to see what it looked for. Below the answer, the **sources** name the documents it used: click a
+source to see the passage. A good answer says what it found, in which document, and stops there. An
+answer with no search and no source means that the chatbot answered from its general knowledge:
+check that the knowledge base is selected in step 6, and that your instructions keep the
+**Sources** section.
+
+If something is not as you want it, change your instructions in your file, paste them again into
+the chatbot (step 6, **Save & Update**), and ask again **in a new chat**, so that the earlier
+answers do not influence the new ones. Part 3 gives a method to test it more seriously.
 
 ---
 
