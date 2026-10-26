@@ -27,6 +27,10 @@ or other people in your questions.
   runs the language model: TO BE COMPLETED (for example: "Anthropic"). It keeps this data for
   TO BE COMPLETED (look for "data retention" on its privacy page).
 
+**What the chatbot remembers.** TO BE COMPLETED (for example: "Nothing: each conversation starts
+from zero." or: "It can remember what you tell it about yourself and use it in your next
+conversations.")
+
 **Who can read your conversations.** TO BE COMPLETED: who (for example: "your youth workers"), as
 the administrators of the chatbot, can read them. The other participants cannot.
 

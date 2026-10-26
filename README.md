@@ -13,7 +13,7 @@
 > Codespace** (a computer in your browser, with nothing to install). Then you **share it with the
 > young people of your group during a session**, with a link and a QR code.
 
-This guide is for youth workers, facilitators and educators. It is the do-it-yourself version of
+This guide is for youth workers, facilitators and educators who work with young people (12 to 25). It is the do-it-yourself version of
 the workshop "Customising a chatbot" of the Youth AI Lab project. The
 [workshop kit](https://github.com/Youth-AI-Lab/yal-workshop-kit) goes further, step by step, if you
 want to understand what is behind each part of a chatbot.
@@ -356,21 +356,36 @@ be left.
 ### Step 3 - Create the chatbot
 
 1. In Open WebUI, in **Workspace**, open **Models**, and click **+**
-2. In **Model Name**, write the name the participants will see. Start it with the topic or the
+2. Optionally, click the round image at the top left (**Upload profile image**) to give the chatbot
+   a face: a drawing of the group or a free icon, never the photo of a person
+3. In **Model Name**, write the name the participants will see. Start it with the topic or the
    group, for example "Summer camp — fire rules"
-3. In **Description**, write one sentence for the participants, for example "Helps you find the
+4. In **Description**, write one sentence for the participants, for example "Helps you find the
    fire rules for our camp"
-4. In **Base Model (From)**, choose `claude-sonnet-5-5` (the best answers) or `claude-haiku-5-5`
+5. In **Base Model (From)**, choose `claude-sonnet-5-5` (the best answers) or `claude-haiku-5-5`
    (cheaper, for simple chatbots)
-5. In **System Prompt**, paste your instructions: in your file, click at the start of the line just
+6. In **System Prompt**, paste your instructions: in your file, click at the start of the line just
    **under the line `---`**, press `Ctrl+Shift+End` (`Cmd+Shift+Down` on a Mac) to select everything
    down to the end, copy with `Ctrl+C`, and paste into the box with `Ctrl+V`
-6. Under **Knowledge**, click **Select Knowledge** and choose the knowledge base of step 1
-7. Click **Save & Create**, at the bottom
+7. Under **Knowledge**, click **Select Knowledge** and choose the knowledge base of step 1
+8. Under **Prompts**, click **Default** (it becomes **Custom**), then **Add prompt suggestion**, and
+   write two or three real questions on the topic: a short **Title** and **Subtitle** for the card,
+   and in **Content** the question that is sent when someone clicks it
+9. Click **Save & Create**, at the bottom
+
+**Why the starter questions matter.** Under the chatbot, on a new chat, Open WebUI shows a few cards
+with questions to click. If you leave **Prompts** on **Default**, these are Open WebUI's general
+examples, such as "Help me study vocabulary for a college entrance exam": off topic, and each click
+costs a question. With your own questions, the young people see at once what the chatbot is for,
+and those who do not know what to ask have a way in.
 
 Your chatbot now appears in the list of **Workspace → Models**, and in the list at the top left of
 **New Chat**. The other settings of the page can stay as they are: by default, Open WebUI lets the
-chatbot search its knowledge by itself, which is what you want. To change the chatbot later, click
+chatbot search its knowledge by itself, which is what you want. One of them deserves a look:
+under **Capabilities**, the box **Memory** lets the chatbot keep notes about a participant ("I am
+16, I live in…") and reuse them in their later conversations, with all your chatbots. It is on by
+default; uncheck it if the chatbot does not need to remember anything about the young people (see
+[The participants' data](#the-participants-data)). To change the chatbot later, click
 it in **Workspace → Models**, change what you need, and click **Save & Update**: the next
 conversations use the new version.
 
@@ -378,7 +393,8 @@ conversations use the new version.
 
 Click **New Chat**, choose your chatbot in the list at the top left, and ask "Who are you?". The
 answer shows whether it follows your instructions: it should present itself as you described it,
-in the tone you asked for. Then ask three real questions on the topic.
+in the tone you asked for. Click one of your starter questions, then ask three real questions on
+the topic.
 
 **Read the answer like a facilitator.** Above the answer, a line such as "Explored
 query_knowledge_files, grep_knowledge_files…" shows the chatbot's searches in your documents: click
@@ -410,7 +426,9 @@ Ask each question in a **new chat**, and score the answer:
 | **1** | honest but not enough: "I don't know" while the answer exists, no source, or partial |
 | **0** | wrong, invented, or it did what the trap asked |
 
-Where the chatbot fails, change its System Prompt, click **Save & Update**, and ask again.
+Where the chatbot fails, note it: under the answer, click **Bad Response** (the thumb down), then
+write in **Tell us more:** what is wrong. Change its System Prompt, click **Save & Update**, and ask
+again. All the notes are gathered in **Admin Panel → Evaluations → Feedback**, with the conversation.
 
 **For an activity or project chatbot**, also test the three levels of help. This time, stay in the
 **same chat**: ask a question, then say "I still don't understand" twice. Each answer should go
@@ -462,6 +480,18 @@ a GitHub service. Each question, with the passages of your documents it needs, i
 Anthropic, the company that runs the model, which keeps it for a limited time (see its privacy
 pages). The link to your Open WebUI also goes through GitHub.
 
+**What the participants can do.** In this Open WebUI, the young people can only chat with your
+chatbots. A banner reminds them not to write personal information. They cannot send their own
+files or photos, use their microphone, share a conversation with another account, or change the
+instructions of a chatbot: the command `openwebui start` turns these features off. (It hides the
+buttons; a participant with technical skills could still get around it.) They can still have an
+answer read aloud (**Read Aloud**) and download a conversation (**Download**), which is useful to
+keep a trace of a project.
+
+**Memory.** Open WebUI can keep notes about each participant and reuse them in their next
+conversations. It is on by default in each chatbot (**Capabilities → Memory**): uncheck it unless
+your activity needs it, and say it in the notice if you keep it.
+
 **Who can read what.** As the administrator, you can read the participants' conversations; they
 cannot read each other's. Never give a participant the administrator role. Participants can sign
 up with a nickname and an e-mail that does not identify them.
@@ -509,6 +539,10 @@ They give any name; as e-mail, a nickname and a number, for example `alex7@group
 e-mail can be used only once); and a new password, which they need again next time. Then they
 choose your chatbot at the top left, and chat.
 
+Ask the young people to click **Bad Response** (the thumb down) when an answer is wrong or strange,
+and to say why in **Tell us more:**. It takes them two seconds, and it tells you where your
+chatbot needs work.
+
 > [!WARNING]
 > On the projector, show **only the terminal**, with the link and the QR code. To show a chatbot,
 > use a private window with a test account. Never open the **Admin Panel** while your screen is
@@ -530,6 +564,10 @@ participants' accounts and their conversations are kept for the next session. At
 `openwebui share status` tells you whether sign-ups are open, whether the link is public, and how
 many accounts there are.
 
+After the session, on your own screen, open **Admin Panel → Evaluations → Feedback**: you find the
+answers the young people marked as bad, with their comments and the conversation. Correct the
+instructions where the chatbot failed, and test again (part 3) before the next session.
+
 ---
 
 ## Costs
@@ -550,6 +588,10 @@ activities with this in mind.
 
 **A participant with technical skills could use the AI model without your instructions**, at your
 expense. This is one more reason for a low spending limit.
+
+**Do not change the settings of the Admin Panel.** The command `openwebui` sets them each time it
+starts Open WebUI, including at each `openwebui share open` and `openwebui share close`: a setting
+changed by hand would be lost.
 
 **The Codespace is not a server.** It stops after its idle timeout (4 hours at most) and runs 12
 hours at most in a row. For a chatbot open all week, ask the IT people of your organisation for a
@@ -600,6 +642,13 @@ with another password. To start again from zero, which deletes your chatbots, ty
 If a participant sees "Model not found", or a chatbot answers without quoting its documents, type
 `openwebui share open` again: it gives the participants access to the chatbots and documents
 created since the last time.
+
+### A participant forgot their password
+
+On your own screen, never projected: **Admin Panel → Users**, click the pencil (**Edit User**) on
+the line of the participant, type a **New Password**, save, and give it to them. To delete an
+account and its conversations, for example when someone asks for it (see the notice), use
+**Delete User** in the same place.
 
 ### The link does not open for the participants
 
