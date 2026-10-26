@@ -3,7 +3,7 @@
   // Même image que le kit de l'atelier (Docker, commande openwebui), en mode classe :
   // Open WebUI avec comptes, à ouvrir aux étudiants le temps d'un cours (openwebui share).
   // Tag épinglé, jamais `latest` : voir facilitator/SETUP.md du dépôt source (yal-workshop).
-  "image": "ghcr.io/youth-ai-lab/yal-workshop-devcontainer:2026.10.21",
+  "image": "ghcr.io/youth-ai-lab/yal-workshop-devcontainer:2026.10.22",
   "remoteUser": "vscode",
   "remoteEnv": {
     "WORKSHOP_HOME": "${containerWorkspaceFolder}",
