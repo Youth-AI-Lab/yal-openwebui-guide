@@ -268,7 +268,7 @@ instructions.
 You build the chatbot in four steps: gather the documents, write the instructions, create the
 chatbot, and try it.
 
-### Step 4 - Gather your documents (knowledge)
+### Step 1 - Gather your documents (knowledge)
 
 1. In Open WebUI, open **Workspace** (left menu), then **Knowledge**
 2. Click **+**. In **What are you working on?**, write the name of the topic or activity, for
@@ -294,7 +294,7 @@ What you put here, the chatbot can quote, **whatever its instructions say**. So 
 you are allowed to send to an online service, and never a finished model or the expected result of
 a project.
 
-### Step 5 - Write the instructions
+### Step 2 - Write the instructions
 
 The instructions are the heart of your chatbot: they turn a general AI model into a guide for
 **your** group. Writing them from a blank page is hard, so you start from a template, and you
@@ -353,7 +353,7 @@ be left.
 > Your copy is kept in the Codespace. To keep it also on your computer, right-click on the file →
 > **Download**.
 
-### Step 6 - Create the chatbot
+### Step 3 - Create the chatbot
 
 1. In Open WebUI, in **Workspace**, open **Models**, and click **+**
 2. In **Model Name**, write the name the participants will see. Start it with the topic or the
@@ -365,7 +365,7 @@ be left.
 5. In **System Prompt**, paste your instructions: in your file, click at the start of the line just
    **under the line `---`**, press `Ctrl+Shift+End` (`Cmd+Shift+Down` on a Mac) to select everything
    down to the end, copy with `Ctrl+C`, and paste into the box with `Ctrl+V`
-6. Under **Knowledge**, click **Select Knowledge** and choose the knowledge base of step 4
+6. Under **Knowledge**, click **Select Knowledge** and choose the knowledge base of step 1
 7. Click **Save & Create**, at the bottom
 
 Your chatbot now appears in the list of **Workspace → Models**, and in the list at the top left of
@@ -374,7 +374,7 @@ chatbot search its knowledge by itself, which is what you want. To change the ch
 it in **Workspace → Models**, change what you need, and click **Save & Update**: the next
 conversations use the new version.
 
-### Step 7 - Try it
+### Step 4 - Try it
 
 Click **New Chat**, choose your chatbot in the list at the top left, and ask "Who are you?". The
 answer shows whether it follows your instructions: it should present itself as you described it,
@@ -385,11 +385,11 @@ query_knowledge_files, grep_knowledge_files…" shows the chatbot's searches in 
 it to see what it looked for. Below the answer, the **sources** name the documents it used: click a
 source to see the passage. A good answer says what it found, in which document, and stops there. An
 answer with no search and no source means that the chatbot answered from its general knowledge:
-check that the knowledge base is selected in step 6, and that your instructions keep the
+check that the knowledge base is selected in step 3, and that your instructions keep the
 **Sources** section.
 
 If something is not as you want it, change your instructions in your file, paste them again into
-the chatbot (step 6, **Save & Update**), and ask again **in a new chat**, so that the earlier
+the chatbot (step 3, **Save & Update**), and ask again **in a new chat**, so that the earlier
 answers do not influence the new ones. Part 3 gives a method to test it more seriously.
 
 ---
@@ -617,7 +617,7 @@ In the **PORTS** tab, on the line of port 3000, click the globe icon (**Open in 
 
 ### All my chatbots are gone
 
-You probably opened a new Codespace with the link of step 1. Go to
+You probably opened a new Codespace with the link of [part 1, step 1](#step-1---open-your-codespace). Go to
 <https://github.com/codespaces> and open the older one.
 
 ---
