@@ -121,9 +121,10 @@ The chatbots of this guide use Claude, a model of the company Anthropic. To use 
 for them. On <https://platform.claude.com>:
 
 1. Create an account, then add a payment method and buy a small amount of credits
-   (**Settings** → **Billing**). Without credits, the key does not work.
+   (**Spending** → **Billing & payments**). Without credits, the key does not work.
 2. Create a **workspace** for your groups: **Settings** → **Workspaces** → **Create workspace**
-3. Give this workspace a **spending limit**: select it, then **Spend limits**
+3. Give this workspace a **spending limit**: **Spending** → **Spend limits**; under **Workspace
+   limits**, choose your workspace in the list, then **Set limit**
 4. Create a key: **Keys & access** (left menu) → **API keys** → **Create key**. In the form, give
    it a **Name**; in **Expires**, choose a duration that ends after your project; in **Scope**,
    choose your workspace; then click **Create key**
@@ -755,14 +756,15 @@ participant**: the spending limit of your workspace is the only real limit. `cla
 costs less than `claude-sonnet-5-5`: use it for simple chatbots.
 
 To see who asked how much, open your account menu (bottom left) → **Settings** → **Analytics**,
-under *Admin*: messages and tokens per participant. To see what it cost, open the pages **Usage**
-and **Cost** of the Claude Console, on <https://platform.claude.com>, and choose your workspace.
+under *Admin*: messages and tokens per participant. To see what it cost, open **Spending** → **Cost & spend** (and **API usage**) in the Claude
+Console, on <https://platform.claude.com>, and choose your workspace.
 Look at both after your first session, not on the projector, and set your spending limit from what
 one session cost.
 
 **When a whole group asks at once.** The provider limits the number of requests per minute, and a
 new account starts with
-[lower limits](https://platform.claude.com/docs/en/api/rate-limits), which rise with use. Each
+[lower limits](https://platform.claude.com/docs/en/api/rate-limits), which rise with use (see
+**Spending** → **Rate limits** in the Console). Each
 question to a chatbot makes several requests (one per search in your documents). With a large
 group, some answers may fail for a minute: ask the young people to try again. Use with a full group
 at the same moment is TO BE COMPLETED: not measured yet. When the spending limit is reached, or the
@@ -825,7 +827,7 @@ running, type `openwebui start` after saving the new key: until then, Open WebUI
 
 If every chatbot shows an error instead of an answer, the key has probably reached the spending
 limit of its workspace, run out of credits, expired, or been deleted. On your own screen, open
-<https://platform.claude.com>: check the credits (**Settings** → **Billing**) and the spending limit
+<https://platform.claude.com>: check the credits (**Spending** → **Billing & payments**) and the spending limit
 of your workspace. Raise the limit or buy credits, then ask again in a new chat. If you create a
 new key, type `workshop-login`, then `openwebui start`: until then, Open WebUI keeps the old key.
 
