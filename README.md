@@ -124,8 +124,15 @@ for them. On <https://platform.claude.com>:
    (**Settings** → **Billing**). Without credits, the key does not work.
 2. Create a **workspace** for your groups: **Settings** → **Workspaces** → **Create workspace**
 3. Give this workspace a **spending limit**: select it, then **Spend limits**
-4. Create a key: **Settings** → **API keys** → **Create key**. In the form, choose your
-   **workspace**, and an **expiration**: a custom duration that ends after your project
+4. Create a key: **Keys & access** (left menu) → **API keys** → **Create key**. In the form, give
+   it a **Name**; in **Expires**, choose a duration that ends after your project; in **Scope**,
+   choose your workspace; then click **Create key**
+
+![The form "Create API key": the boxes Expires and Scope (the key itself is not shown)](images/console-key.png)
+
+**Linked account** says who the key acts for. For a key of your own, choose yourself. An
+organisation can choose a *service account* instead, as in the picture: the key then keeps working
+if you leave the organisation.
 
 The key starts with `sk-ant-`. It is shown **only once**: copy it into your password manager right
 away, and keep it private.
@@ -137,7 +144,7 @@ each question of each participant is paid from it, and Open WebUI has no limit p
 Start low; you can raise it after your first session.
 
 > [!WARNING]
-> Do not leave the **workspace** field of the key empty: such a key would not work here (see
+> Do not leave the **Scope** field of the key empty: such a key would not work here (see
 > [The key is refused](#the-key-is-refused)).
 
 ---
