@@ -821,6 +821,91 @@ even when it is stopped.
 
 ---
 
+## Going further
+
+These links were checked in October 2026. Each one goes deeper into one part of this guide.
+
+### The documentation
+
+- [Knowledge Bases and Document Chat](https://docs.openwebui.com/features/workspace/knowledge)
+  (Open WebUI): everything about the knowledge of a chatbot, and what to add to the instructions
+  when a chatbot ignores its documents.
+- [Models](https://docs.openwebui.com/features/workspace/models) (Open WebUI): what a chatbot is
+  made of in Open WebUI, field by field, including the starter questions.
+- [Prompt engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
+  (Anthropic): how to improve your instructions, starting, like part 3, with what a good answer is
+  and how to test it.
+
+### The Youth AI Lab project
+
+- [The workshop kit "Customising a chatbot"](https://github.com/Youth-AI-Lab/yal-workshop-kit):
+  the hands-on workshop behind this guide. Step by step, it shows what enters a chatbot before it
+  answers: instructions, documents, search, live data, a wiki.
+- [The slides of the workshop](https://youth-ai-lab.github.io/yal-workshop/): to present these
+  ideas to your team.
+- [The deliverables of the project](https://github.com/Youth-AI-Lab/deliverables), in five
+  languages: the approach, the exploration protocol, and ready-to-use activity sheets, among them
+  *WikiYouthBot*, to turn a chatbot into a full session with young people.
+
+### Articles
+
+- [What Is Retrieval-Augmented Generation, aka RAG?](https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation/)
+  (Rick Merritt, NVIDIA blog, 2023, updated 2025): the knowledge part of a chatbot explained with a
+  judge who sends a clerk to the library; it helps, but it does not stop all invented answers. The
+  end of the article presents NVIDIA products.
+- [Introducing Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval)
+  (Anthropic, 2024): why a search in documents can miss the answer, when a cut-out passage no longer
+  says what it is about. A good reason for short documents with clear titles.
+- [Best practices for prompt engineering](https://www.claude.com/blog/best-practices-for-prompt-engineering)
+  (Anthropic, 2025): be explicit, explain the goal, give examples, let the model say it does not
+  know, start simple and test.
+- [Now is the time for grimoires](https://www.oneusefulthing.org/p/now-is-the-time-for-grimoires)
+  (Ethan Mollick, 2023): what makes good instructions, with a tutor that checks what the learner
+  knows before helping, close to the three levels of help of the templates.
+- [Assigning AI: Seven Ways of Using AI in Class](https://www.oneusefulthing.org/p/assigning-ai-seven-ways-of-using)
+  (Ethan Mollick, 2023): AI as tutor, coach or teammate, with the risks seen with real students and
+  how to talk about them with the group.
+- [This school built its own chatbots](https://educationhq.com/news/this-school-built-its-own-chatbots-students-rate-them-highly-as-a-learning-tool-214229/)
+  (Sarah Duggan, EducationHQ, 2026): teachers who are not technicians built chatbots on their own
+  resources, which hold back the answer until the student tries; they worked best during a guided
+  session.
+- [Tracing the thoughts of a large language model](https://www.anthropic.com/research/tracing-thoughts-language-model)
+  (Anthropic, 2025): read the part on hallucinations, which explains why a chatbot sometimes invents
+  an answer instead of saying "I don't know".
+
+### Research
+
+- [Generative AI without guardrails can harm learning](https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/)
+  (Bastani et al., *PNAS*, 2025): with about 1,000 high school students, a chatbot that gave the
+  answers raised practice scores but lowered exam scores; a tutor that gave hints instead mostly
+  avoided the drop. This is the reason for the progressive help of the templates.
+- [AI tutoring outperforms in-class active learning](https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/)
+  (Kestin et al., *Scientific Reports*, 2025): the other side of the coin. A tutor with careful
+  instructions and checked solutions helped university students learn more.
+- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)
+  (Lewis et al., NeurIPS, 2020): the paper that named RAG, the "search the documents, then answer"
+  method behind the knowledge of a chatbot.
+- [A Survey on Hallucination in Large Language Models](https://arxiv.org/abs/2311.05232)
+  (Huang et al., *ACM Transactions on Information Systems*, 2024): why models invent answers, and why
+  documents reduce this without removing it.
+
+### Young people, rights and rules
+
+- [Guidance on AI and children](https://www.unicef.org/innocenti/reports/policy-guidance-ai-children)
+  (UNICEF Innocenti, version 3.0, 2025): ten requirements and a checklist (safety, data, transparency,
+  well-being, AI skills), a good frame for the part on the participants' data.
+- [Guidance for generative AI in education and research](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research)
+  (UNESCO, 2023): data protection, an age limit for using these tools alone, and a design that suits
+  the age of the learners; available in 14 languages.
+- [AI Literacy — Questions & Answers](https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers)
+  (European Commission): what the AI Act asks of an organisation that offers an AI tool such as a
+  chatbot, including explaining its risks to the people who use it.
+- [Guide on the use of AI in youth information services](https://eurodesk.eu/our-work/guide-on-the-use-of-ai-in-youth-information-services/)
+  (Eurodesk, 2025): AI explained for the youth sector, how to talk about it with young people,
+  ethics, and a self-assessment tool.
+
+---
+
 ## About
 
 This guide was made in the Erasmus+ project **Youth AI Lab**. Texts, templates and screenshots are
