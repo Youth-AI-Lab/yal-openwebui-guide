@@ -623,13 +623,17 @@ their documents. Then it makes sure the link can be opened from outside.
 Open WebUI uses the **port 3000**: think of it as its door to the internet. For now, only you can
 open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". Do what it says:
 
+![The terminal after openwebui share open: sign-ups are open, and the frame "YOUR TURN" gives the four steps](images/terminal-your-turn.png)
+
 1. At the bottom of the window, click the **PORTS** tab, next to TERMINAL
 2. Right-click on the line of port **3000**
 3. Choose **Port Visibility**, then **Public**
 4. Come back to the terminal and press **Enter**
 
 The command checks and answers "Done: port 3000 is now public". It then shows **the link and a
-QR code**: project them. The participants open the link or scan the code, and see a **warning page
+QR code**: project them.
+
+![The terminal shows "Done: port 3000 is now public", the link for the participants and its QR code](images/terminal-link-qr.png) The participants open the link or scan the code, and see a **warning page
 from GitHub**: they click **Continue**. On the sign-in page, they click **Sign up**, under the form.
 As name, a first name or a nickname, never their full name; as e-mail, a nickname and a number, for
 example `alex7@group.local` (each e-mail can be used only once); and a new password, which they need
