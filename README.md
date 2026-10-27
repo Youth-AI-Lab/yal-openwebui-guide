@@ -206,6 +206,8 @@ next times, about **1 minute**. It ends with a frame like this one:
 ========================================================================
 ```
 
+![The terminal after the first openwebui start: the address, the e-mail and the password to sign in (the password is hidden here)](images/terminal-start.png)
+
 **Copy the password now** into your password manager, or write it on paper. Then type `clear` and
 press Enter: the password disappears from the terminal. The command shows it only this first time,
 because later you may project your terminal during a session.
