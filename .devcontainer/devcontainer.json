@@ -1,17 +1,17 @@
 {
-  "name": "Youth AI Lab — class chatbots with Open WebUI",
-  // Même image que le kit de l'atelier (Docker, commande openwebui), en mode classe :
-  // Open WebUI avec comptes, à ouvrir aux étudiants le temps d'un cours (openwebui share).
-  // Tag épinglé, jamais `latest` : voir facilitator/SETUP.md du dépôt source (yal-workshop).
+  "name": "Youth AI Lab — group chatbots with Open WebUI",
+  // The same image as the workshop kit (Docker, the openwebui command), in group mode:
+  // Open WebUI with accounts, opened to the participants for a session (openwebui share).
+  // A pinned tag, never `latest`: each version of the guide is tested with one image.
   "image": "ghcr.io/youth-ai-lab/yal-workshop-devcontainer:2026.10.23",
   "remoteUser": "vscode",
   "remoteEnv": {
     "WORKSHOP_HOME": "${containerWorkspaceFolder}",
     "OPENWEBUI_MODE": "class"
   },
-  // Open WebUI occupe environ 1,2 Go : 8 Go de mémoire (machine à 2 cœurs, celle par défaut).
+  // Open WebUI uses about 1.2 GB: 8 GB of memory (the default 2-core machine).
   "hostRequirements": { "cpus": 2, "memory": "8gb" },
-  // La commande affiche l'adresse quand tout est prêt (pas d'onglet ouvert avant).
+  // The command shows the address when everything is ready (no tab opened before).
   "portsAttributes": {
     "3000": { "label": "Open WebUI", "onAutoForward": "silent" }
   },

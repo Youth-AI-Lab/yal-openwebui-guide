@@ -3,9 +3,10 @@ SPDX-PackageName = "yal-openwebui-guide"
 SPDX-PackageSupplier = "Youth AI Lab (Erasmus+)"
 SPDX-PackageDownloadLocation = "https://github.com/Youth-AI-Lab/yal-openwebui-guide"
 
-# Texts and templates: CC BY-SA 4.0.
+# Texts, templates and screenshots: CC BY-SA 4.0. The screenshots show the interface of
+# Open WebUI (https://github.com/open-webui/open-webui), which belongs to its authors.
 [[annotations]]
-path = ["README.md", "templates/**"]
+path = ["README.md", "templates/**", "images/**"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Youth AI Lab partners"
 SPDX-License-Identifier = "CC-BY-SA-4.0"
