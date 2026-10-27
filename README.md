@@ -632,6 +632,8 @@ open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". 
 3. Choose **Port Visibility**, then **Public**
 4. Come back to the terminal and press **Enter**
 
+![The PORTS tab: (1) the tab, (2) a right-click on the line of port 3000, (3) Port Visibility, then Public](images/ports-menu.png)
+
 The command checks and answers "Done: port 3000 is now public". It then shows **the link and a
 QR code**: project them.
 
