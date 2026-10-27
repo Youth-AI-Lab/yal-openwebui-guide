@@ -639,6 +639,8 @@ As name, a first name or a nickname, never their full name; as e-mail, a nicknam
 example `alex7@group.local` (each e-mail can be used only once); and a new password, which they need
 again next time. Then they choose your chatbot in the message box (bottom right), and chat.
 
+![The warning page of GitHub that the participants see first: they click Continue](images/github-warning.png)
+
 ![The sign-in page of Open WebUI: participants click "Sign up", under the form](images/signin.png)
 
 ![The sign-up form of a participant: a nickname, an e-mail made of a nickname and a number, a new password](images/signup.png)
