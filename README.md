@@ -31,6 +31,7 @@ want to understand what is behind each part of a chatbot.
 | **3. Test** | Check, with a few well-chosen questions, that the chatbot answers from your documents and resists the usual traps. |
 | **4. One chatbot per use** | Choose the right template for a topic, an activity or a project, and decide which group sees which chatbot. |
 | **5. Open it to your group** | Let the participants sign up and use your chatbots during a session, then close the door after it. |
+| **6. Keep your chatbots** | Export each chatbot to a file on your computer, and rebuild it in a new Codespace or another tool. |
 
 At the end, you will also know what this costs, where the participants' data goes, and what a
 chatbot's rules can and cannot guarantee.
@@ -239,8 +240,8 @@ with the same menu → **Delete**.
 
 GitHub deletes a Codespace that stayed stopped for **30 days**, with your chatbots, your documents
 and the participants' accounts. To keep yours, for example over the holidays, choose **Keep
-codespace** in its **…** menu: it then stays until you delete it yourself. In any case, keep a copy
-of each chatbot's instructions on your computer.
+codespace** in its **…** menu: it then stays until you delete it yourself. In any case, export your
+chatbots and keep the files on your computer ([part 6](#part-6---keep-your-chatbots)).
 
 ---
 
@@ -589,8 +590,8 @@ presence in the room). Ask your data protection officer what to ask of parents o
 rely on consent, the age from which a young person can give it alone for an online service differs
 between EU countries.
 
-**At the end of the project**, copy the instructions you want to keep into a document on your
-computer, then type `openwebui reset`: this deletes the accounts, conversations, memories and
+**At the end of the project**, export the chatbots you want to keep
+([part 6](#part-6---keep-your-chatbots)) and download the files, then type `openwebui reset`: this deletes the accounts, conversations, memories and
 feedback in Open WebUI. Then delete the Codespace itself: on <https://github.com/codespaces>, its
 **…** menu → **Delete**. What was sent to Anthropic is deleted on its own schedule (see above), not
 by these commands.
@@ -673,9 +674,60 @@ many accounts there are.
 After the session, on your own screen, open **Admin Panel → Evaluations → Feedback**: you find the
 answers the young people marked as bad, with their comments, the question and the answer. Click a
 line to read it. Correct the instructions where the chatbot failed, and test again (part 3) before the next
-session.
+session. If you changed a chatbot, export it again ([part 6](#part-6---keep-your-chatbots)).
 
 ![A participant's thumb down in Admin Panel → Evaluations → Feedback: the question, the answer, the reason and the comment (test account)](images/admin-feedback.png)
+
+---
+
+## Part 6 - Keep your chatbots
+
+A Codespace is not made to last: GitHub deletes it after 30 days stopped, and you may want a fresh
+one for a new group, a new year, or a new version of this guide. Your chatbots do not have to go
+with it. With one command, each chatbot becomes a file that you keep on your computer, and that
+rebuilds it later in a new Codespace, or in another tool.
+
+### Step 1 - Export your chatbots
+
+```bash
+openwebui export
+```
+
+The command writes one `.zip` file per chatbot in the folder `exports/`, for example
+`exports/summer-camp-fire-rules.zip`. Inside, you find the two boxes of every chatbot tool:
+`instructions.md` (the System Prompt) and the folder `knowledge/` (your documents, as you uploaded
+them). The file `openwebui.json` keeps the rest: name, description, base model, starter questions,
+the boxes of **Capabilities** such as **Memory**, and the image. A `README.md` explains how to
+rebuild it. The participants' accounts and conversations are **not** in it, on purpose: they stay in
+the Codespace and go away with it (see [The participants' data](#the-participants-data)).
+
+Then keep the file on your computer: in the VS Code tab, open the folder `exports/` in the file
+list, right-click on the file → **Download**. Do it after each session where you changed a chatbot,
+and always before you delete a Codespace or type `openwebui reset`.
+
+### Step 2 - Import a chatbot
+
+In the new Codespace, save your key and start Open WebUI as in [part 1](#part-1---set-up). Then
+drag the `.zip` file from your computer onto the file list of VS Code, and type:
+
+```bash
+openwebui import summer-camp-fire-rules.zip
+```
+
+The command creates the knowledge base with the documents, then the chatbot with all its settings,
+and ends with `Imported: "Summer camp — fire rules", with 3 documents.` If a chatbot with the same
+name is already there, it is replaced. Like a new chatbot, it is not open to the participants yet:
+in a session, `openwebui share open` gives it to them. Test it first ([part 3](#part-3---test-before-you-open)):
+two or three questions show whether it finds its documents.
+
+**The chatbot of the workshop, too.** `openwebui import` also takes the file made by
+`chatbot-export` in the [workshop kit](https://github.com/Youth-AI-Lab/yal-workshop-kit): the chatbot
+you built during the workshop comes into your Open WebUI, with its instructions and its documents.
+
+**In another tool.** The file is not tied to Open WebUI. Its `README.md` explains how to rebuild the
+chatbot in a Claude Project or a Gemini Gem: paste `instructions.md` into the instructions, and add
+the files of `knowledge/` to the knowledge. Before you open such a chatbot to young people, read
+the rules of that tool on data and on minors, as in [The participants' data](#the-participants-data).
 
 ---
 
@@ -734,6 +786,8 @@ Type them in the terminal of the Codespace.
 | `openwebui share open` | during a session: participants can sign up and use your chatbots; shows the link and a QR code |
 | `openwebui share close` | after the session: no more sign-ups; helps you make the link private again |
 | `openwebui share status` | sign-ups open or closed, link public or private, number of accounts |
+| `openwebui export` | writes one `.zip` file per chatbot in `exports/`, to keep on your computer |
+| `openwebui import FILE` | rebuilds a chatbot from such a file, or from `chatbot-export` of the workshop kit |
 | `openwebui stop` | stops Open WebUI (your data is kept) |
 | `openwebui reset` | deletes everything in Open WebUI (asks you to confirm) |
 | `openwebui help` | the list of commands |
@@ -817,7 +871,8 @@ In the **PORTS** tab, on the line of port 3000, click the globe icon (**Open in 
 You probably opened a new Codespace with the link of [part 1, step 1](#step-1---open-your-codespace). Go to
 <https://github.com/codespaces> and open the older one. Then delete the new one, which has none of
 your chatbots: its **…** menu → **Delete**. Each Codespace takes several GB of your free storage,
-even when it is stopped.
+even when it is stopped. If there is no older one any more (GitHub deleted it), keep the new one
+and import the files you exported ([part 6](#part-6---keep-your-chatbots)).
 
 ---
 
