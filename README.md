@@ -139,7 +139,7 @@ The key starts with `sk-ant-`. It is shown **only once**: copy it into your pass
 away, and keep it private.
 
 Here, a workspace is a group of keys with its own spending limit. You need your own, because the
-**Default Workspace** cannot have a spending limit. It has nothing to do with the *Workspace* menu
+workspace **Default** cannot have a spending limit. It has nothing to do with the *Workspace* menu
 of Open WebUI that you will meet later. The spending limit is what protects you:
 each question of each participant is paid from it, and Open WebUI has no limit per participant.
 Start low; you can raise it after your first session.
