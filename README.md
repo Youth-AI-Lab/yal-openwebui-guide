@@ -307,8 +307,9 @@ chatbot, and try it.
    one sentence, for example "Documents on fire rules for our summer camp". Leave the access on
    **Private**: the participants get access when you open your chatbots to them (part 5). Click
    **Create Knowledge**
-3. Add your documents (PDF, Word, text): click the small **+** at the right of the search box
-   (**Add Content**), then **Upload files**, and wait until each one appears in the list
+3. Add your documents (PDF, Word, text): click the small **+** at the right end of the search line,
+   after the sliders icon (**Add Content**), then **Upload files**. Your files appear in the list at
+   once, marked **Uploading**, then **Processing**: wait until each one shows its size instead
 
 ![The form "Create a knowledge base", filled in](images/knowledge-create.png)
 
@@ -317,11 +318,13 @@ chatbot, and try it.
 **What Open WebUI does with your documents.** It extracts the text of each file, cuts it into
 passages of about a thousand characters, and builds a search index of these passages. This index
 is computed inside your Open WebUI, by a small model of its own: nothing is sent to Anthropic at
-this step. To check that a document was read, click it in the list: you should see its text. If
-you see nothing, the file has no real text in it (a scan, for example), and the chatbot cannot use
-it.
+this step. To check that a document was read, click it in the list: it opens on the right, in
+**Preview**, as the original file. Click **Indexed text** at the top of that pane: this is the text
+the chatbot searches. What is missing there, the chatbot cannot find. A file with no real text in it
+(a scan, for example) is refused: a yellow message says "The content provided is empty", and the
+file leaves the list.
 
-![A document opened in the knowledge base: its text is visible](images/knowledge-file-text.png)
+![A document opened in the knowledge base: Indexed text shows the text the chatbot searches](images/knowledge-file-text.png)
 
 **Which documents to choose.** The chatbot only knows what is in these documents, so choose them as
 you would choose what to photocopy for the group: a few documents, each on one subject, with clear
@@ -399,29 +402,37 @@ yours when you hesitate. When you are done, search your file for "TO BE" (`Ctrl+
 
 1. In Open WebUI, in **Workspace**, open the tab **Models**, and click **Create** (top right; not
    the small arrow next to it)
-2. Optionally, click the round image at the top left (**Upload profile image**) to give the chatbot
-   a face: a drawing of the group or a free icon, never the photo of a person
+2. Optionally, click the square picture at the top left, on the grey band (**Upload profile
+   image**), to give the chatbot a face: a drawing of the group or a free icon, never the photo of
+   a person
 3. In **Model Name**, write the name the participants will see. Start it with the topic or the
    group, for example "Summer camp — fire rules"
-4. In **Base Model (From)**, choose `claude-sonnet-5-5` (the best answers) or `claude-haiku-5-5`
-   (cheaper, for simple chatbots)
-5. In **Description**, write one sentence for the participants, for example "Helps you find the
+4. In **Description**, write one sentence for the participants, for example "Helps you find the
    fire rules for our camp"
+5. In **Base Model (From)**, click **Select a base model** and choose `claude-sonnet-5-5` (the best
+   answers) or `claude-haiku-5-5` (cheaper, for simple chatbots). The list has a search box at the
+   top
 6. In **System Prompt**, paste your instructions: in your file, click at the start of the line just
    **under the line `---`**, press `Ctrl+Shift+End` (`Cmd+Shift+Down` on a Mac) to select everything
    down to the end, copy with `Ctrl+C`, and paste into the box with `Ctrl+V`
 
-![The top of the chatbot form, filled in: profile image, name, base model, description, instructions](images/model-top.png)
+![The top of the chatbot form, filled in: profile image, name, description, base model, instructions](images/model-top.png)
 
-7. Under **Prompts**, click **Default** (it becomes **Custom**): an empty card appears. Write a
-   real question on the topic: a short **Title** and **Subtitle** for the card, and in **Content**
-   the question that is sent when someone clicks it. For a second or third question, click the
-   small **+** at the right (**Add prompt suggestion**)
-8. Under **Knowledge**, click **Select Knowledge** and choose the knowledge base of step 1, under
-   **Collections** (not one of its files, listed under **Files**)
-9. Click **Save & Create**, at the bottom
+7. Click the row **Prompts** (it says **Default**), then **Customize**, at the right: an empty card
+   appears. In **Write a prompt…**, type a real question on the topic: it is sent when someone
+   clicks the card. Click **Display text**, under it, to give the card a short **Title** and
+   **Subtitle**. For a second or third question, click **+ Add prompt**, under the cards
+8. Click the row **Knowledge** (it says **None**): a list opens. Choose the knowledge base of step 1
+   under **Collections** (not one of its files, listed under **Files**), then click **Done**, at the
+   bottom of the list. Do not use **Upload Files** there: it adds loose files to the chatbot, not to
+   a knowledge base
+9. Click the row **Capabilities** and look at the switch **Memory**. It lets the chatbot keep notes
+   about a participant ("I am 16, I live in…") and reuse them in their later conversations, with
+   all your chatbots. It is on by default. Turn it off if the chatbot does not need to remember
+   anything about the young people (see [The participants' data](#the-participants-data))
+10. Click **Save & Create**, at the bottom right
 
-![The rest of the form: two starter questions, the knowledge base, and the Memory box](images/model-bottom.png)
+![The rest of the form: two starter questions, the knowledge base, and the Memory switch](images/model-bottom.png)
 
 **Why the starter questions matter.** Under the chatbot, on a new chat, Open WebUI shows a few cards
 with questions to click. If you leave **Prompts** on **Default**, these are Open WebUI's general
@@ -431,19 +442,23 @@ and those who do not know what to ask have a way in.
 
 Your chatbot now appears in the list of **Workspace → Models**, and in the list of models of the
 message box, on **New Chat**. The other settings of the page can stay as they are: by default, Open WebUI lets the
-chatbot search its knowledge by itself, which is what you want. One of them deserves a look:
-under **Capabilities**, the box **Memory** lets the chatbot keep notes about a participant ("I am
-16, I live in…") and reuse them in their later conversations, with all your chatbots. It is on by
-default; uncheck it if the chatbot does not need to remember anything about the young people (see
-[The participants' data](#the-participants-data)). To change the chatbot later, click
-it in **Workspace → Models**, change what you need, and click **Save & Update**: the next
-conversations use the new version.
+chatbot search its knowledge by itself, which is what you want. There is a second **Memory** switch
+under **Builtin Tools**. The one under **Capabilities** is enough: when you turn it off, the second
+one disappears. To turn **Memory** off after creating the chatbot, open it again in
+**Workspace → Models**, turn the switch off and click **Save & Update**.
+
+To change the chatbot later, click it in **Workspace → Models**. Your instructions are folded:
+click them (or **Show more**) to open them. To replace them, click in the box, select everything
+(`Ctrl+A`, `Cmd+A` on a Mac), and paste the new version. Then click **Save & Update**, at the bottom
+right: it stays grey until you change something. In the field **Describe this change**, at the
+bottom left, you can note what you changed. The next conversations use the new version.
 
 ### Step 4 - Try it
 
 Click **New Chat**, then the model name at the bottom right of the message box, and choose your
 chatbot. Its name, its description and your starter questions appear: this is what the
-participants will see.
+participants will see. A shortcut: in **Workspace → Models**, the small arrow next to the name of
+the chatbot (**Try in chat**) opens it in a new chat.
 
 ![A new chat with the chatbot: its name, the message box with the chatbot chosen at the bottom right, and the starter questions](images/chat-new.png)
 
@@ -544,9 +559,9 @@ one, open its menu in the same list and choose **Clone**.
 **Several groups or courses.** All your groups share this one Open WebUI, and every account sees
 every active chatbot, also the accounts made by another group in an earlier session. Before each
 session, in **Workspace → Models**, switch on only the chatbots of this group and switch the others
-off, then type `openwebui share open`. Do not use the **Access** setting of a chatbot or the user
-groups of Open WebUI for this: `openwebui share open` replaces them (see
-[Limits to know](#limits-to-know)).
+off, then type `openwebui share open`. Do not use the **Access** setting of a chatbot (the button
+at the top of its page, or **Access** in its menu) or the user groups of Open WebUI for this:
+`openwebui share open` replaces them (see [Limits to know](#limits-to-know)).
 
 ---
 
@@ -584,9 +599,9 @@ of a project. Their account settings still let them add a profile photo, a bio, 
 their birth date: ask them to leave these empty.
 
 **Memory.** Open WebUI can keep notes about each participant and reuse them in their next
-conversations. It is on by default in each chatbot (**Capabilities → Memory**): uncheck it unless
+conversations. It is on by default in each chatbot (**Capabilities → Memory**): turn it off unless
 your activity needs it, and say it in the notice if you keep it. If the notice says that the
-chatbots remember nothing, uncheck it in each new chatbot too.
+chatbots remember nothing, turn it off in each new chatbot too.
 
 **Who can read what.** As the administrator, you can read the participants' conversations; they
 cannot read each other's. Never give a participant the administrator role. Participants sign up
@@ -694,7 +709,7 @@ answers the young people marked as bad, with their comments, the question and th
 line to read it. Correct the instructions where the chatbot failed, and test again (part 3) before the next
 session. If you changed a chatbot, export it again ([part 6](#part-6---keep-your-chatbots)).
 
-![A participant's thumb down in Admin Panel → Evaluations → Feedback: the question, the answer, the reason and the comment (test account)](images/admin-feedback.png)
+![The details of a participant's thumb down (Admin Panel → Evaluations → Feedback, click a line): the question, the answer, the reason and the comment](images/admin-feedback.png)
 
 ---
 
@@ -715,7 +730,7 @@ The command writes one `.zip` file per chatbot in the folder `exports/`, for exa
 `exports/summer-camp-fire-rules.zip`. Inside, you find the two boxes of every chatbot tool:
 `instructions.md` (the System Prompt) and the folder `knowledge/` (your documents, as you uploaded
 them). The file `openwebui.json` keeps the rest: name, description, base model, starter questions,
-the boxes of **Capabilities** such as **Memory**, and the image. A `README.md` explains how to
+the switches of **Capabilities** such as **Memory**, and the image. A `README.md` explains how to
 rebuild it. The participants' accounts and conversations are **not** in it, on purpose: they stay in
 the Codespace and go away with it (see [The participants' data](#the-participants-data)).
 
@@ -756,7 +771,9 @@ participant**: the spending limit of your workspace is the only real limit. `cla
 costs less than `claude-sonnet-5-5`: use it for simple chatbots.
 
 To see who asked how much, open your account menu (bottom left) → **Settings** → **Analytics**,
-under *Admin*: messages and tokens per participant. To see what it cost, open **Spending** → **Cost & spend** (and **API usage**) in the Claude
+under *Admin*, then click **Users** under the chart: for each participant, the messages and the
+tokens (**Input**, **Output**, **Total**). It shows the **Last 7 days** at first: choose another
+period at the top right. To see what it cost, open **Spending** → **Cost & spend** (and **API usage**) in the Claude
 Console, on <https://platform.claude.com>, and choose your workspace.
 Look at both after your first session, not on the projector, and set your spending limit from what
 one session cost.
@@ -844,7 +861,8 @@ Codespace: wait one minute, then type the command again.
 `Your administrator password does not open this Open WebUI` means that the password in Open WebUI
 is no longer the one the command keeps. If you changed it in Open WebUI, put it back: type
 `openwebui password` (screen not projected), then in Open WebUI open your name at the bottom left →
-**Settings** → **Account** → **Change Password**, and set that password again. Only if this does
+**Settings** → **Account** → **Change Password**, and set that password again. You are then signed
+out: sign in again with that password. Only if this does
 not help, start again from zero, which deletes your chatbots: `openwebui reset`, then
 `openwebui start`.
 
@@ -857,7 +875,8 @@ created since the last time.
 ### A participant forgot their password
 
 On your own screen, never projected: **Admin Panel → Users**, click the pencil (**Edit User**) on
-the line of the participant, type a **New Password**, save, and give it to them.
+the line of the participant, type a **New Password**, save, and give it to them. This signs them
+out on all their devices.
 
 ### A participant asks to delete their data
 

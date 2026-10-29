@@ -36,7 +36,7 @@ or other people in your questions.
   can also see how many questions each account asked.
 
 **What the chatbot remembers.** TO BE COMPLETED: one of these two sentences (for example:
-"Nothing: each conversation starts from zero.", only if Memory is unchecked in every chatbot,
+"Nothing: each conversation starts from zero.", only if Memory is turned off in every chatbot,
 including new ones; or: "It can remember what you tell it about yourself and use it in your next
 conversations, with all the chatbots of the group. You can see and delete it in Settings →
 Personalization.")
