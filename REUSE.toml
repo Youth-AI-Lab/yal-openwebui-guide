@@ -13,7 +13,7 @@ SPDX-License-Identifier = "CC-BY-SA-4.0"
 
 # Configuration files: EUPL-1.2.
 [[annotations]]
-path = [".devcontainer/**", ".vscode/**", ".gitignore", "REUSE.toml"]
+path = [".devcontainer/**", ".vscode/**", ".gitignore", ".gitattributes", "REUSE.toml"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Youth AI Lab partners"
 SPDX-License-Identifier = "EUPL-1.2"
