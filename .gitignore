@@ -1,3 +1,6 @@
 # Your API key and your administrator account are kept outside this folder (in your home folder and in
 # /workspaces/.openwebui-class): nothing secret is written here. Exports you download:
 *.zip
+# On your own computer (dev container), /workspaces cannot be written: the administrator account is
+# then kept here, and never committed.
+.openwebui-class/
