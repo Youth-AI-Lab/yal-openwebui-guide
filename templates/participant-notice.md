@@ -1,8 +1,8 @@
 # Information for participants — template
 
 Give this notice to the participants before they use the chatbot (on paper, on a slide, or on your
-group's page). Replace each `TO BE COMPLETED: …` with your text, and have it checked by your
-organisation's data protection officer. You can translate it into the language of your group.
+group's page). Replace each `TO BE COMPLETED: …` with your text, and have it checked by whoever
+handles data protection in your organisation. You can translate it into the language of your group.
 For participants under 18, also check what your organisation asks of their parents or guardians.
 
 ---
@@ -52,7 +52,7 @@ the administrators of the chatbot, can read them. The other participants cannot.
 **How long.** Your account and conversations are deleted TO BE COMPLETED: when (for example: "on
 30 June" or "at the end of the project").
 
-**Questions or requests** (access, deletion): TO BE COMPLETED: a contact (youth worker or data
-protection officer). Your questions are processed outside the European Union (for example, in the
-United States): TO BE COMPLETED: on which basis (your data protection officer fills this in). You
+**Questions or requests** (access, deletion): TO BE COMPLETED: a contact (youth worker, or whoever
+handles data protection). Your questions are processed outside the European Union (for example, in the
+United States): TO BE COMPLETED: on which basis (whoever handles data protection fills this in). You
 can also complain to TO BE COMPLETED: the data protection authority of your country.
