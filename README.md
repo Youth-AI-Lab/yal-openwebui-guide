@@ -210,7 +210,7 @@ next times, about **1 minute**. It ends with a frame like this one:
 
  Keep this password for you (do not show it on the projector).
  To see it again: openwebui password
- If the address does not open: PORTS tab -> 3000 -> Open in Browser.
+ If it does not open: Ports tab -> Open WebUI -> Open in Browser.
 ========================================================================
 ```
 
@@ -652,8 +652,7 @@ The command lets the participants sign up, and gives them access to your active 
 their documents. Then it makes sure the link can be opened from outside.
 
 Open WebUI uses the **port 3000**: think of it as its door to the internet. For now, only you can
-open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". Do what it says
-(in VS Code, the tabs are called **Ports** and **Terminal**):
+open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". Do what it says:
 
 ![The terminal after openwebui share open: sign-ups are open, the list of the chatbots the participants can use, and the frame "YOUR TURN" with the four steps](images/terminal-your-turn.png)
 
