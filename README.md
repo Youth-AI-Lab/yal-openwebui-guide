@@ -768,7 +768,8 @@ you built during the workshop comes into your Open WebUI, with its instructions 
 
 **In another tool.** The file is not tied to Open WebUI. Its `README.md` explains how to rebuild the
 chatbot in a Claude Project or a Gemini Gem: paste `instructions.md` into the instructions, and add
-the files of `knowledge/` to the knowledge. Before you open such a chatbot to young people, read
+the files of `knowledge/` to the knowledge. On personal accounts, Google makes Gems read-only on
+2026-11-17 and removes them on 2026-12-17. Before you open such a chatbot to young people, read
 the rules of that tool on data and on minors, as in [The participants' data](#the-participants-data).
 
 ---
