@@ -214,7 +214,7 @@ next times, about **1 minute**. It ends with a frame like this one:
 ========================================================================
 ```
 
-![The terminal after the first openwebui start: the address, the e-mail and the password to sign in (the password is hidden here)](images/terminal-start.png)
+![The terminal after the first openwebui start (the download lines of the very first time are not shown): the address, the e-mail and the password to sign in (the password is hidden here)](images/terminal-start.png)
 
 **Copy the password now** into your password manager, or write it on paper. Then type `clear` and
 press Enter: the password disappears from the terminal. The command shows it only this first time,
@@ -518,8 +518,12 @@ question and the answer.
 **Memory can spoil your tests.** It is on by default, and it can carry notes from one chat to the
 next, with all your chatbots: a trap question can leave a note that changes the next answers.
 Before a round of tests, open your name at the bottom left → **Settings** → **Personalization**, and
-delete the saved memories (**Remove** on each one, or **Actions** → **Clear memory**). Do the same
-in your test account.
+delete the **Saved Memories**: **Remove** on each one, or **Actions** → **Clear memory**. Each time,
+click **Confirm** in the box that opens. Do the same in your test account.
+
+![Settings → Personalization: (1) the tab Personalization, (2) Remove, at the right of each saved memory](images/memory-settings.png)
+
+![The menu of the saved memories: (3) Actions, (4) Clear memory](images/memory-actions.png)
 
 **For an activity or project chatbot**, also test the three levels of help. This time, stay in the
 **same chat**: ask a question, then say "I still don't understand" twice. Each answer should go
@@ -554,7 +558,9 @@ project, selected together, saves you from uploading the same documents twice.
 **What the participants see.** Everyone who signs up sees **all your active chatbots**, in the list
 of models of the message box. Start each name with the topic or the group, and turn off the switch
 of a chatbot that is not ready, in **Workspace → Models**. To start a new chatbot from an existing
-one, open its menu in the same list and choose **Clone**.
+one, open its menu **…** in the same list and choose **Clone**.
+
+![Workspace → Models with three chatbots, one switched off: (1) Create, (2) "Try in chat", the label of the small arrow next to a name, (3) the switch of a chatbot, here off, (4) the menu … of a chatbot, (5) Clone in this menu](images/models-list.png)
 
 **Several groups or courses.** All your groups share this one Open WebUI, and every account sees
 every active chatbot, also the accounts made by another group in an earlier session. Before each
@@ -646,25 +652,28 @@ The command lets the participants sign up, and gives them access to your active 
 their documents. Then it makes sure the link can be opened from outside.
 
 Open WebUI uses the **port 3000**: think of it as its door to the internet. For now, only you can
-open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". Do what it says:
+open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". Do what it says
+(in VS Code, the tabs are called **Ports** and **Terminal**):
 
-![The terminal after openwebui share open: sign-ups are open, and the frame "YOUR TURN" gives the four steps](images/terminal-your-turn.png)
+![The terminal after openwebui share open: sign-ups are open, the list of the chatbots the participants can use, and the frame "YOUR TURN" with the four steps](images/terminal-your-turn.png)
 
-1. At the bottom of the window, click the **PORTS** tab, next to TERMINAL
-2. Right-click on the line of port **3000**
+1. At the bottom of the window, click the **Ports** tab, next to **Terminal**
+2. Right-click on the line **Open WebUI** (port 3000)
 3. Choose **Port Visibility**, then **Public**
 4. Come back to the terminal and press **Enter**
 
-![The PORTS tab: (1) the tab, (2) a right-click on the line of port 3000, (3) Port Visibility, then Public](images/ports-menu.png)
+![The Ports tab: (1) the tab, (2) a right-click on the line Open WebUI (port 3000), (3) Port Visibility, then Public](images/ports-menu.png)
 
 The command checks and answers "Done: port 3000 is now public". It then shows **the link and a
 QR code**: project them.
 
-![The terminal shows "Done: port 3000 is now public", the link for the participants and its QR code](images/terminal-link-qr.png) The participants open the link or scan the code, and see a **warning page
-from GitHub**: they click **Continue**. On the sign-in page, they click **Sign up**, under the form.
-As name, a first name or a nickname, never their full name; as e-mail, a nickname and a number, for
-example `alex7@group.local` (each e-mail can be used only once); and a new password, which they need
-again next time. Then they choose your chatbot in the message box (bottom right), and chat.
+![The terminal shows "Done: port 3000 is now public", the link for the participants and its QR code](images/terminal-link-qr.png)
+
+The participants open the link or scan the code, and see a **warning page from GitHub**: they click
+**Continue**. On the sign-in page, they click **Sign up**, under the form. As name, a first name or a
+nickname, never their full name; as e-mail, a nickname and a number, for example `alex7@group.local`
+(each e-mail can be used only once); and a new password, which they need again next time. Then they
+choose your chatbot in the message box (bottom right), and chat.
 
 ![The warning page of GitHub that the participants see first: they click Continue](images/github-warning.png)
 
@@ -902,7 +911,8 @@ Open it again from <https://github.com/codespaces>, then type `openwebui start` 
 
 ### The address does not open for you
 
-In the **PORTS** tab, on the line of port 3000, click the globe icon (**Open in Browser**).
+In the **Ports** tab, on the line **Open WebUI** (port 3000), click the globe icon (**Open in
+Browser**). The picture of this tab is in [part 5, During the session](#during-the-session).
 
 ### All my chatbots are gone
 
