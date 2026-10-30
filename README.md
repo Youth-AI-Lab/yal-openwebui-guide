@@ -399,7 +399,7 @@ yours when you hesitate. When you are done, search your file for "TO BE" (`Ctrl+
 
 > [!TIP]
 > Your copy is kept in the Codespace. To keep it also on your computer, right-click on the file →
-> **Download**.
+> **Download...**.
 
 ### Step 3 - Create the chatbot
 
@@ -775,7 +775,7 @@ rebuild it. The participants' accounts and conversations are **not** in it, on p
 the Codespace and go away with it (see [The participants' data](#the-participants-data)).
 
 Then keep the file on your computer: in the VS Code tab, open the folder `exports/` in the file
-list, right-click on the file → **Download**. Do it after each session where you changed a chatbot,
+list, right-click on the file → **Download...**. Do it after each session where you changed a chatbot,
 and always before you delete a Codespace or type `openwebui reset`.
 
 ### Step 2 - Import a chatbot
