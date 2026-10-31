@@ -200,7 +200,7 @@ The key is now saved in your Codespace, readable only by you: you will not have 
 openwebui start
 ```
 
-The first time, the command downloads Open WebUI (about 4.6 GB): count **3 to 4 minutes**. The
+The first time, the command downloads Open WebUI (about 1.6 GB): count **3 to 4 minutes**. The
 next times, about **1 minute**. It ends with a frame like this one:
 
 ```
