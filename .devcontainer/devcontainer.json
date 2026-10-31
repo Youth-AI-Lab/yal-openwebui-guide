@@ -1,5 +1,5 @@
 {
-  "name": "Youth AI Lab — group chatbots with Open WebUI",
+  "name": "Youth AI Lab: group chatbots with Open WebUI",
   // The same image as the workshop kit (Docker, the openwebui command), in group mode:
   // Open WebUI with accounts, opened to the participants for a session (openwebui share).
   // A pinned tag, never `latest`: each version of the guide is tested with one image.
