@@ -1,4 +1,4 @@
-# Topic assistant — system prompt template
+# Topic assistant: system prompt template
 
 For a topic you work on with a group: the chatbot explains the topic from your documents, and
 points to where the young people can read more. Same structure as the activity and project

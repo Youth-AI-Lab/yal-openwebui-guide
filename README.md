@@ -1,6 +1,6 @@
 # Chatbots for your groups with Open WebUI
 
-## Youth AI Lab — Erasmus+ project
+## Youth AI Lab - Erasmus+ project
 
 - **Partners:** L.A.B. (Aix-en-Provence), UAB (Barcelona), Perlatecnica (Naples), Digitale Wolven
   (Antwerp), CSC Vent des Îles (La Rochelle)
@@ -306,7 +306,7 @@ chatbot, and try it.
 1. In Open WebUI, open **Workspace** in the left menu (when the menu is folded, it is the icon made
    of four squares), then the tab **Knowledge** at the top
 2. Click **Create** (top right). In **What are you working on?**, write the name of the topic or
-   activity, for example "Summer camp — fire rules". In **What are you trying to achieve?**, write
+   activity, for example "Summer camp - fire rules". In **What are you trying to achieve?**, write
    one sentence, for example "Documents on fire rules for our summer camp". Leave the access on
    **Private**: the participants get access when you open your chatbots to them (part 5). Click
    **Create Knowledge**
@@ -409,7 +409,7 @@ yours when you hesitate. When you are done, search your file for "TO BE" (`Ctrl+
    image**), to give the chatbot a face: a drawing of the group or a free icon, never the photo of
    a person
 3. In **Model Name**, write the name the participants will see. Start it with the topic or the
-   group, for example "Summer camp — fire rules"
+   group, for example "Summer camp - fire rules"
 4. In **Description**, write one sentence for the participants, for example "Helps you find the
    fire rules for our camp"
 5. In **Base Model (From)**, click **Select a base model** and choose `claude-sonnet-5-5` (the best
@@ -789,7 +789,7 @@ openwebui import summer-camp-fire-rules.zip
 ```
 
 The command creates the knowledge base with the documents, then the chatbot with all its settings,
-and ends with `Imported: "Summer camp — fire rules", with 3 documents.` If a chatbot with the same
+and ends with `Imported: "Summer camp - fire rules", with 3 documents.` If a chatbot with the same
 name is already there, it is replaced. Like a new chatbot, it is not open to the participants yet:
 in a session, `openwebui share open` gives it to them. Test it first ([part 3](#part-3---test-before-you-open)):
 two or three questions show whether it finds its documents.
@@ -1046,7 +1046,7 @@ These links were checked in October 2026. Each one goes deeper into one part of 
 - [Guidance for generative AI in education and research](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research)
   (UNESCO, 2023): data protection, an age limit for using these tools alone, and a design that suits
   the age of the learners; available in 14 languages.
-- [AI Literacy — Questions & Answers](https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers)
+- [AI Literacy - Questions & Answers](https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers)
   (European Commission): what the AI Act asks of an organisation that offers an AI tool such as a
   chatbot, including explaining its risks to the people who use it.
 - [Guide on the use of AI in youth information services](https://eurodesk.eu/our-work/guide-on-the-use-of-ai-in-youth-information-services/)

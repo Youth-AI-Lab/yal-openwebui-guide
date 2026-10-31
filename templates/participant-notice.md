@@ -1,4 +1,4 @@
-# Information for participants — template
+# Information for participants: template
 
 Give this notice to the participants before they use the chatbot (on paper, on a slide, or on your
 group's page). Replace each `TO BE COMPLETED: …` with your text, and have it checked by whoever
