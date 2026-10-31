@@ -15,7 +15,7 @@
 
 This guide is for youth workers, facilitators and educators who work with young people (12 to 25). It is the do-it-yourself version of
 the series of workshops "Build your own chatbot" of the Youth AI Lab project. The
-[series](https://github.com/Youth-AI-Lab/yal-workshop-kit) goes further, in five workshops, if you
+[series](https://github.com/Youth-AI-Lab/yal-workshop-kit) goes further, in six workshops, if you
 want to understand what is behind each part of a chatbot.
 
 ---
@@ -978,9 +978,10 @@ These links were checked in October 2026. Each one goes deeper into one part of 
 
 ### The Youth AI Lab project
 
-- [The series "Build your own chatbot"](https://github.com/Youth-AI-Lab/yal-workshop-kit): the five
+- [The series "Build your own chatbot"](https://github.com/Youth-AI-Lab/yal-workshop-kit): the six
   hands-on workshops behind this guide, each with its own repository. Workshop by workshop, they
-  show what enters a chatbot before it answers: instructions, documents, search, live data, a wiki.
+  show what enters a chatbot before it answers: instructions, documents, search, live data, a wiki,
+  and a small model that sorts the messages.
 - [The site of the series](https://youth-ai-lab.github.io/yal-workshop/): the slides, to present
   these ideas to your team.
 - The other guides of the project:
