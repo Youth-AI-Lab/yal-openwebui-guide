@@ -169,7 +169,7 @@ Paste it in [step 2](#step-2---save-your-key) of part 1: `workshop-login` sees w
 ends with:
 
 ```
-Warning: with young people, turn on zero-data-retention models hosted in Europe.
+Warning: with young people, turn on zero-data-retention models hosted in Europe: workshop-login --europe
 Key OK (OpenRouter, model deepseek/deepseek-v4-flash). You can start: openwebui start
 ```
 
@@ -184,29 +184,25 @@ the account has bought 10 dollars of credits), for all your participants togethe
 kept nothing, and none runs in Europe: they are not for a group of young people.
 
 > [!WARNING]
-> **With young people, zero-data-retention models hosted in Europe must be on, before the group
-> starts.** Today the commands of this guide cannot do this with an OpenRouter key: **do not open
-> this Open WebUI to young people with this key** until that is settled. `openwebui start` and
-> `openwebui share open` repeat the rule: "Warning: with young people, turn on zero-data-retention
-> models hosted in Europe, in your OpenRouter settings." These commands do not turn anything on for
-> you.
+> **With young people and OpenRouter, type `workshop-login --europe` before the group starts.**
+> Press Enter to keep your key, then type `openwebui start`: until then, Open WebUI keeps the old
+> rule, and `openwebui start` and `openwebui share open` repeat: "Warning: with young people, turn
+> on zero-data-retention models hosted in Europe: workshop-login --europe".
 >
-> - **Zero data retention** means that the company that runs the model says it stores nothing. In
->   your [privacy settings](https://openrouter.ai/settings/privacy), turn on the switch of each group
->   of models, then choose **Zero retention only**: otherwise Google may keep prompts it flags, for
->   up to 90 days. All the steps:
->   [part 8, step 1](https://github.com/Youth-AI-Lab/yal-openrouter-guide#step-1-zero-data-retention).
-> - **Hosted in Europe** is not in these settings, whatever the message says. OpenRouter keeps it
->   for its
->   [Business and Enterprise plans](https://openrouter.ai/docs/guides/features/in-region-routing),
->   through the address `eu.openrouter.ai`. The plan is not enough here: the command `openwebui`
->   always uses `openrouter.ai`, with no option to change it.
-> - **The model must change too.** `deepseek/deepseek-v4-flash`, the first model here, has no
->   endpoint in Europe. `mistralai/mistral-small-3.2-24b-instruct` has one, served by Mistral.
-> - **Age.** OpenRouter's [terms](https://openrouter.ai/terms) say "You must be at least 18 years
->   of age to use the Service", and your own users must follow them too. They do not say whether
->   young people may use a chatbot behind your organisation: ask OpenRouter in writing, and let your
->   organisation decide.
+> Requests then go only to zero-data-retention companies (they say they store nothing) hosted in
+> Europe. You have one base model, `mistralai/mistral-small-3.2-24b-instruct`, served by Mistral,
+> with a smaller window (how much the model can read at once): 32k tokens.
+>
+> - **What stays outside Europe.** OpenRouter itself may still handle a request elsewhere, and
+>   accounts, billing and security logs may stay in the US. Keeping the handling in Europe needs a
+>   [Business plan](https://openrouter.ai/docs/guides/features/in-region-routing) and the address
+>   `eu.openrouter.ai`, and the command `openwebui` always uses `openrouter.ai`.
+> - **Age.** The setting does not lift OpenRouter's [terms](https://openrouter.ai/terms): "You must
+>   be at least 18 years of age to use the Service", and section 5.2 makes your own users follow
+>   them too. They do not say whether young people may use a chatbot behind your organisation: ask
+>   OpenRouter in writing, and let your organisation decide. **Do not open this Open WebUI to young
+>   people with this key** before it has settled this.
+> - **Flagged content** may be kept, even with zero data retention.
 >
 > These facts were read on 1 November 2026. Before the session, read
 > [part 8 of the OpenRouter guide](https://github.com/Youth-AI-Lab/yal-openrouter-guide#part-8---data-and-young-people).
