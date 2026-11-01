@@ -127,7 +127,7 @@ for them. On <https://platform.claude.com>:
    (**Spending** → **Billing & payments**). Without credits, the key does not work.
 2. Create a **workspace** for your groups: **Settings** → **Workspaces** → **Create workspace**
 3. Give this workspace a **spending limit**: **Spending** → **Spend limits**; under **Workspace
-   limits**, choose your workspace in the list, then **Set limit**
+   limits**, choose your workspace in the list, then **Set limit** (how much: see **How low?** below)
 4. Create a key: **Keys & access** (left menu) → **API keys** → **Create key**. In the form, give
    it a **Name**; in **Expires**, choose a duration that ends after your project; in **Scope**,
    choose your workspace; then click **Create key**
@@ -146,6 +146,14 @@ workspace **Default** cannot have a spending limit. It has nothing to do with th
 of Open WebUI that you will meet later. The spending limit is what protects you:
 each question of each participant is paid from it, and Open WebUI has no limit per participant.
 Start low; you can raise it after your first session.
+
+**How low?** One session costs about: participants × questions each × cost of one question. We have
+not measured a chatbot of this guide, so this is a first guess. In two other tools, with
+`claude-sonnet-5-5`, a question answered from documents cost up to about 0.05 dollars (estimates).
+For 15 participants who ask 10 questions each (numbers made up for the example):
+15 × 10 × 0.05 = 7.5 dollars. Add up every session you will hold before you next change the limit,
+and your own tests. After your first session, put your real cost per question in place of 0.05
+([Costs](#costs)).
 
 > [!WARNING]
 > Do not leave the **Scope** field of the key empty: such a key would not work here (see
