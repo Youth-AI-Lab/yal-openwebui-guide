@@ -830,7 +830,7 @@ costs less than `claude-sonnet-5-5`: use it for simple chatbots.
 
 To see who asked how much, open your account menu (bottom left) → **Settings** → **Analytics**,
 under *Admin*, then click **Users** under the chart: for each participant, the messages and the
-tokens (**Input**, **Output**, **Total**). It shows the **Last 7 days** at first: choose another
+[tokens](https://github.com/Youth-AI-Lab/yal-local-ai-guide/blob/main/how-an-llm-works.md#what-a-token-really-is) (**Input**, **Output**, **Total**). It shows the **Last 7 days** at first: choose another
 period at the top right. To see what it cost, open **Spending** → **Cost & spend** (and **API usage**) in the Claude
 Console, on <https://platform.claude.com>, and choose your workspace.
 Look at both after your first session, not on the projector, and set your spending limit from what
@@ -991,6 +991,8 @@ These links were checked in October 2026. Each one goes deeper into one part of 
 
 ### The Youth AI Lab project
 
+- [How a language model works](https://github.com/Youth-AI-Lab/yal-local-ai-guide/blob/main/how-an-llm-works.md): what a model is, tokens, the context window and
+  temperature, with pictures and real numbers.
 - [The series "Build your own chatbot"](https://github.com/Youth-AI-Lab/yal-workshop-kit): the six
   hands-on workshops behind this guide, each with its own repository. Workshop by workshop, they
   show what enters a chatbot before it answers: instructions, documents, search, live data, a wiki,
