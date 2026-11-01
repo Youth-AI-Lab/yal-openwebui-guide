@@ -190,8 +190,9 @@ kept nothing, and none runs in Europe: they are not for a group of young people.
 > on zero-data-retention models hosted in Europe: workshop-login --europe".
 >
 > Requests then go only to Mistral, hosted in Europe, with zero data retention (it says it stores
-> nothing). You have one base model, `mistralai/mistral-small-3.2-24b-instruct`, served by Mistral,
-> with a smaller window (how much the model can read at once): 32k tokens.
+> nothing). You have two base models, both served by Mistral: `mistralai/mistral-small-2603`, and the
+> cheaper `mistralai/mistral-small-3.2-24b-instruct`. The second one has a smaller window (how much
+> the model can read at once): 32k tokens, against 262k. A chatbot on it stays on it.
 >
 > - **What stays outside Europe.** OpenRouter itself may still handle a request elsewhere, and
 >   accounts, billing and security logs may stay in the US. Keeping the handling in Europe needs a
@@ -211,8 +212,8 @@ kept nothing, and none runs in Europe: they are not for a group of young people.
 > Tested on 1 November 2026: the Open WebUI of the workshops (v0.12.4, no accounts) with Mistral
 > Small through OpenRouter answered 11 questions in 44 s, without an error. In the mode of this
 > guide, with accounts, `openwebui start` was tried against a fake OpenRouter only. **Not tested**:
-> a real answer in this mode, `openwebui share open` with this key, `deepseek/deepseek-v4-flash` in
-> Open WebUI, and a group.
+> a real answer in this mode, `openwebui share open` with this key, `deepseek/deepseek-v4-flash` and
+> `mistralai/mistral-small-2603` in Open WebUI, and a group.
 
 ---
 
