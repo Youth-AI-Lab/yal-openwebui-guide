@@ -78,8 +78,9 @@ The participant asks again: "I still don't understand."
 
 The participant asks a third time.
 
-> Here is the same idea on another case: fireworks. Document 31 says: "From level SÉVÈRE
-> (orange), fireworks and pyrotechnic shows are forbidden, except at sea or from the foreshore…",
-> and "From level TRÈS SÉVÈRE (red), all fireworks are forbidden." So the steps are: find the rule,
+> Here is the same idea on another case: fireworks. Document 31 says: "Fireworks and pyrotechnic
+> shows are forbidden in the forest areas at every vigilance level", then "Elsewhere, from level
+> SÉVÈRE (orange), they are forbidden, except at sea or from the foreshore…", and "From level
+> TRÈS SÉVÈRE (red), all fireworks are forbidden." So the steps are: find the rule,
 > note the level where it starts, then check what changes at the next level. Now try the same steps
 > on barbecues.
