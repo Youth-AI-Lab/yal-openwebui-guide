@@ -189,8 +189,8 @@ kept nothing, and none runs in Europe: they are not for a group of young people.
 > rule, and `openwebui start` and `openwebui share open` repeat: "Warning: with young people, turn
 > on zero-data-retention models hosted in Europe: workshop-login --europe".
 >
-> Requests then go only to zero-data-retention companies (they say they store nothing) hosted in
-> Europe. You have one base model, `mistralai/mistral-small-3.2-24b-instruct`, served by Mistral,
+> Requests then go only to Mistral, hosted in Europe, with zero data retention (it says it stores
+> nothing). You have one base model, `mistralai/mistral-small-3.2-24b-instruct`, served by Mistral,
 > with a smaller window (how much the model can read at once): 32k tokens.
 >
 > - **What stays outside Europe.** OpenRouter itself may still handle a request elsewhere, and
