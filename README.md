@@ -83,7 +83,7 @@ home. The model then runs on that computer too: a smaller model, slow without a 
 
 ### Prerequisites
 
-You need a **GitHub account** and an **Anthropic API key**, both prepared in the next section,
+You need a **GitHub account** and an **API key** (Anthropic or OpenRouter), both prepared in the next section,
 and about **one hour**. No technical knowledge is expected: every command to type is given, and
 you only type a few of them.
 
@@ -98,7 +98,7 @@ from you.
 Do this part **on your own, never with your screen projected**: you will see your key.
 
 **First, ask your organisation in whose name to create these two accounts.** They will hold the
-participants' data and the contract with Anthropic, and whoever handles data protection in your
+participants' data and the contract with the provider of your key, and whoever handles data protection in your
 organisation may prefer accounts in the name of the organisation rather than your own.
 
 ### Your GitHub account
@@ -159,6 +159,65 @@ and your own tests. After your first session, put your real cost per question in
 > Do not leave the **Scope** field of the key empty: such a key would not work here (see
 > [The key is refused](#the-key-is-refused)).
 
+### Or an OpenRouter key
+
+You can use a key of [OpenRouter](https://openrouter.ai) instead: one key for models from many
+companies. Create it as in
+[way 3 of the OpenCode guide](https://github.com/Youth-AI-Lab/yal-opencode-guide#way-3---an-openrouter-key),
+and set a **Credit limit** on the key: this is your spending limit. The key starts with `sk-or-`.
+Paste it in [step 2](#step-2---save-your-key) of part 1: `workshop-login` sees whose key it is, and
+ends with:
+
+```
+Warning: with young people, turn on zero-data-retention models hosted in Europe.
+Key OK (OpenRouter, model deepseek/deepseek-v4-flash). You can start: openwebui start
+```
+
+Open WebUI then offers two base models, `deepseek/deepseek-v4-flash` and
+`mistralai/mistral-small-3.2-24b-instruct`. Where this guide says `claude-sonnet-5-5` or
+`claude-haiku-5-5`, choose one of these two, and where it says Claude, read your model. To change
+the first one, `workshop-login --models openrouter` lists the models and
+`workshop-login --model <name>` chooses one. `workshop-login --models free` lists the free models:
+they stop at [20 requests a minute and 50 a day](https://openrouter.ai/pricing) (1,000 a day once
+the account has bought 10 dollars of credits), for all your participants together. On 1 November
+2026, OpenRouter's pages marked 8 of the 14 free models as training on data, only one of the 14
+kept nothing, and none runs in Europe: they are not for a group of young people.
+
+> [!WARNING]
+> **With young people, zero-data-retention models hosted in Europe must be on, before the group
+> starts.** Today the commands of this guide cannot do this with an OpenRouter key: **do not open
+> this Open WebUI to young people with this key** until that is settled. `openwebui start` and
+> `openwebui share open` repeat the rule: "Warning: with young people, turn on zero-data-retention
+> models hosted in Europe, in your OpenRouter settings." These commands do not turn anything on for
+> you.
+>
+> - **Zero data retention** means that the company that runs the model says it stores nothing. In
+>   your [privacy settings](https://openrouter.ai/settings/privacy), turn on the switch of each group
+>   of models, then choose **Zero retention only**: otherwise Google may keep prompts it flags, for
+>   up to 90 days. All the steps:
+>   [part 8, step 1](https://github.com/Youth-AI-Lab/yal-openrouter-guide#step-1-zero-data-retention).
+> - **Hosted in Europe** is not in these settings, whatever the message says. OpenRouter keeps it
+>   for its
+>   [Business and Enterprise plans](https://openrouter.ai/docs/guides/features/in-region-routing),
+>   through the address `eu.openrouter.ai`. The plan is not enough here: the command `openwebui`
+>   always uses `openrouter.ai`, with no option to change it.
+> - **The model must change too.** `deepseek/deepseek-v4-flash`, the first model here, has no
+>   endpoint in Europe. `mistralai/mistral-small-3.2-24b-instruct` has one, served by Mistral.
+> - **Age.** OpenRouter's [terms](https://openrouter.ai/terms) say "You must be at least 18 years
+>   of age to use the Service", and your own users must follow them too. They do not say whether
+>   young people may use a chatbot behind your organisation: ask OpenRouter in writing, and let your
+>   organisation decide.
+>
+> These facts were read on 1 November 2026. Before the session, read
+> [part 8 of the OpenRouter guide](https://github.com/Youth-AI-Lab/yal-openrouter-guide#part-8---data-and-young-people).
+
+> [!NOTE]
+> Tested on 1 November 2026: the Open WebUI of the workshops (v0.12.4, no accounts) with Mistral
+> Small through OpenRouter answered 11 questions in 46 s, without an error. In the mode of this
+> guide, with accounts, `openwebui start` was tried against a fake OpenRouter only. **Not tested**:
+> a real answer in this mode, `openwebui share open` with this key, `deepseek/deepseek-v4-flash` in
+> Open WebUI, and a group.
+
 ---
 
 ## Part 1 - Set up
@@ -195,6 +254,8 @@ with:
 ```
 Key OK (Anthropic, model claude-sonnet-5-5). You can start: openwebui start
 ```
+
+With an OpenRouter key, see [Or an OpenRouter key](#or-an-openrouter-key).
 
 The key is now saved in your Codespace, readable only by you: you will not have to paste it again.
 
@@ -328,8 +389,8 @@ chatbot, and try it.
 
 **What Open WebUI does with your documents.** It extracts the text of each file, cuts it into
 passages of about a thousand characters, and builds a search index of these passages. This index
-is computed inside your Open WebUI, by a small model of its own: nothing is sent to Anthropic at
-this step. To check that a document was read, click it in the list: it opens on the right, in
+is computed inside your Open WebUI, by a small model of its own: nothing is sent to the provider
+of your key at this step. To check that a document was read, click it in the list: it opens on the right, in
 **Preview**, as the original file. Click **Indexed text** at the top of that pane: this is the text
 the chatbot searches. What is missing there, the chatbot cannot find. A file with no real text in it
 (a scan, for example) is refused: a yellow message says "The content provided is empty", and the
@@ -344,7 +405,7 @@ one thing each. Prefer the documents you would trust in front of the group: offi
 your own activity sheets, the brief of the project.
 
 What you put here, the chatbot can quote to every participant, **whatever its instructions say**,
-and it is sent to Anthropic when it is used. So only add documents you are allowed to send to an
+and it is sent to the provider of your key when it is used. So only add documents you are allowed to send to an
 online service, **never a document with personal information** (names of participants, phone
 numbers, addresses, photos of people, medical notes: remove them first), and never a finished
 model or the expected result of a project.
@@ -421,8 +482,8 @@ yours when you hesitate. When you are done, search your file for "TO BE" (`Ctrl+
 4. In **Description**, write one sentence for the participants, for example "Helps you find the
    fire rules for our camp"
 5. In **Base Model (From)**, click **Select a base model** and choose `claude-sonnet-5-5` (the best
-   answers) or `claude-haiku-5-5` (cheaper, for simple chatbots). The list has a search box at the
-   top
+   answers) or `claude-haiku-5-5` (cheaper, for simple chatbots), or a model of
+   [your OpenRouter key](#or-an-openrouter-key). The list has a search box at the top
 6. In **System Prompt**, paste your instructions: in your file, click at the start of the line just
    **under the line `---`**, press `Ctrl+Shift+End` (`Cmd+Shift+Down` on a Mac) to select everything
    down to the end, copy with `Ctrl+C`, and paste into the box with `Ctrl+V`
@@ -619,6 +680,22 @@ again, they change. If your organisation wants the questions to stay in the orga
 computers instead: no data sent to a company, but a smaller model, which needs a graphics card to
 answer fast.
 
+**With an OpenRouter key**, each question goes to OpenRouter, a New York company, then to the
+company that serves the model. Each request of this guide asks for companies that do not collect
+user data (`data_collection: deny`). This rule is not zero data retention: on 1 November 2026,
+`google/gemini-2.5-flash-lite` answered with it on, and the one company that serves it is listed
+with 55 days of retention. OpenRouter
+[says](https://openrouter.ai/docs/guides/privacy/data-collection) that it does not store prompts or
+responses, unless you opt in or content is flagged as possible child sexual abuse material. It keeps
+metadata (tokens, latency) and samples a small number of prompts to sort them by category, and it
+[does not train on your data](https://openrouter.ai/privacy). Personal data may go to its servers
+in the United States. Give its
+[data processing agreement](https://openrouter.ai/data-processing-agreement) to whoever handles data
+protection: it says "No processing of Sensitive Data or any special categories is intended", and a
+young person may still write about their health. It also says that OpenRouter does not guarantee
+what each company does. Read on 1 November 2026. See also the warning in
+[Or an OpenRouter key](#or-an-openrouter-key).
+
 **What the participants can do.** In this Open WebUI, the young people can only chat with your
 chatbots. A banner, in English, reminds them not to write personal information: say it in their
 language at the start of the session. They cannot send files or photos to the chatbots, use their
@@ -669,8 +746,8 @@ handle this, and must not try:
 **At the end of the project**, export the chatbots you want to keep
 ([part 6](#part-6---keep-your-chatbots)) and download the files, then type `openwebui reset`: this deletes the accounts, conversations, memories and
 feedback in Open WebUI. Then delete the Codespace itself: on <https://github.com/codespaces>, its
-**…** menu → **Delete**. What was sent to Anthropic is deleted on its own schedule (see above), not
-by these commands.
+**…** menu → **Delete**. What was sent to the provider of your key is deleted on its own schedule
+(see above), not by these commands.
 
 ---
 
@@ -685,7 +762,9 @@ check that your chatbots answer. If it says **Sign-ups are OPEN** while you are 
 (you forgot `openwebui share close` last time), type `openwebui share close` now. Switch on only the
 chatbots of this group ([part 4](#part-4---one-chatbot-per-topic-activity-or-project)). If you
 created or changed a chatbot since the last session, do the participant test of
-[part 3](#part-3---test-before-you-open) again. Check also the spending limit of your workspace.
+[part 3](#part-3---test-before-you-open) again. Check also the spending limit of your workspace
+(OpenRouter: the **Credit limit** of the key, and the [warning](#or-an-openrouter-key) on young
+people).
 
 ### During the session
 
@@ -826,7 +905,9 @@ the rules of that tool on data and on minors, as in [The participants' data](#th
 
 Each question of each participant is paid from **your key**, and Open WebUI has **no limit per
 participant**: the spending limit of your workspace is the only real limit. `claude-haiku-5-5`
-costs less than `claude-sonnet-5-5`: use it for simple chatbots.
+costs less than `claude-sonnet-5-5`: use it for simple chatbots. With an OpenRouter key, this limit
+is the **Credit limit** of the key, and your account pages on <https://openrouter.ai> show what you
+spent. What a session costs with its two models: TO BE COMPLETED (not measured).
 
 To see who asked how much, open your account menu (bottom left) → **Settings** → **Analytics**,
 under *Admin*, then click **Users** under the chart: for each participant, the messages and the
@@ -899,6 +980,10 @@ account has no credits yet, or that the key does not belong to a workspace. `The
 been pasted twice`: type `workshop-login` again and paste only once. If Open WebUI was already
 running, type `openwebui start` after saving the new key: until then, Open WebUI keeps the old one.
 
+With an OpenRouter key, each message says what to do. `Key saved, but OpenRouter refuses it`: create
+a new key on openrouter.ai. `Key saved, but this OpenRouter account has no credits left`: add
+credits. `Key saved, but no company can serve the model`: choose another model.
+
 ### The chatbots answer with an error
 
 If every chatbot shows an error instead of an answer, the key has probably reached the spending
@@ -906,6 +991,8 @@ limit of its workspace, run out of credits, expired, or been deleted. On your ow
 <https://platform.claude.com>: check the credits (**Spending** → **Billing & payments**) and the spending limit
 of your workspace. Raise the limit or buy credits, then ask again in a new chat. If you create a
 new key, type `workshop-login`, then `openwebui start`: until then, Open WebUI keeps the old key.
+With an OpenRouter key, check the same things on <https://openrouter.ai>: the credits, and the
+**Credit limit** of the key.
 
 If only some answers fail when the whole group asks at once, wait a minute and ask again (see
 [Costs](#costs)).
