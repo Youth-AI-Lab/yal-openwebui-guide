@@ -209,7 +209,7 @@ kept nothing, and none runs in Europe: they are not for a group of young people.
 
 > [!NOTE]
 > Tested on 1 November 2026: the Open WebUI of the workshops (v0.12.4, no accounts) with Mistral
-> Small through OpenRouter answered 11 questions in 46 s, without an error. In the mode of this
+> Small through OpenRouter answered 11 questions in 44 s, without an error. In the mode of this
 > guide, with accounts, `openwebui start` was tried against a fake OpenRouter only. **Not tested**:
 > a real answer in this mode, `openwebui share open` with this key, `deepseek/deepseek-v4-flash` in
 > Open WebUI, and a group.
