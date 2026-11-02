@@ -254,7 +254,7 @@ Key OK (Anthropic, model claude-sonnet-5-5). You can start: openwebui start
 
 With an OpenRouter key, see [Or an OpenRouter key](#or-an-openrouter-key).
 
-The key is now saved in your Codespace, readable only by you: you will not have to paste it again.
+The key is now saved in your Codespace, locked away: only the workshop commands can open it. You will not have to paste it again.
 
 > [!TIP]
 > In the terminal, paste with `Ctrl+Shift+V` and copy with `Ctrl+Shift+C` (`Cmd+V` and `Cmd+C` on
