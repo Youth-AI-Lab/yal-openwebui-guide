@@ -200,12 +200,15 @@ kept nothing, and none runs in Europe: they are not for a group of young people.
 >   `eu.openrouter.ai`, and the command `openwebui` always uses `openrouter.ai`.
 > - **Age.** The setting does not lift OpenRouter's [terms](https://openrouter.ai/terms): "You must
 >   be at least 18 years of age to use the Service", and section 5.2 makes your own users follow
->   them too. They do not say whether young people may use a chatbot behind your organisation: ask
->   OpenRouter in writing, and let your organisation decide. **Do not open this Open WebUI to young
->   people with this key** before it has settled this.
+>   them too. They do not say whether young people may use a chatbot behind your organisation.
+>   Asked through its support chat, OpenRouter answered that the rule forbids a young person to
+>   create and use their own key, and does not apply to young people supervised by a responsible
+>   adult. This is not written in its terms. **The key stays with the adults**: never give it to a
+>   young person, stay with the group, and let your organisation decide.
 > - **Flagged content** may be kept, even with zero data retention.
 >
-> These facts were read on 1 November 2026. Before the session, read
+> The texts quoted here were read on 1 November 2026; the date of the support chat answer was not
+> recorded. Before the session, read
 > [part 8 of the OpenRouter guide](https://github.com/Youth-AI-Lab/yal-openrouter-guide#part-8---data-and-young-people).
 
 > [!NOTE]
