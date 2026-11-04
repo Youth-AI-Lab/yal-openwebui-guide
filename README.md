@@ -529,6 +529,23 @@ conversations), **Task Management** (task lists in a chat) and **Skills** (it re
 your Open WebUI and, when you test the chatbot yourself, can write new ones). Keep
 **Knowledge Base** on: it is how the chatbot searches its documents. Then click **Save & Update**.
 
+**Skills, if you attach one.** A skill is a short text of steps for one kind of request, kept in
+**Workspace → Skills**; the chatbot editor has a row **Skills**, under **Knowledge** and **Tools**,
+to attach one.
+With the switch **Skills** of **Builtin Tools** turned off, as above, Open WebUI puts the whole text of
+each attached skill with **every** message, even "Hello": it works like a part of the instructions,
+and the chatbot cannot read, list or change the skills. Each message then costs a little more (about
+200 tokens for a skill of 17 lines, by our estimate). In a session, `openwebui share open` lets the
+participants use the skills attached to the chatbots it shares. We measured this with skills attached
+by `openwebui import` (part 6), with a test model; attaching one by hand in the editor was not tried.
+
+> [!NOTE]
+> In the Codespaces of [the series](https://github.com/Youth-AI-Lab/yal-workshop-kit),
+> `openwebui chatbot --name "…" --rag` makes a chatbot with the **Legacy** setting above, and the
+> chatbot of workshops 4 and 5 also gets a live tool (`fire_danger`, read-only). Both exist only there, in an
+> Open WebUI without accounts: this guide has neither the command nor the live tool. Here, choose
+> **Legacy** by hand if you want it.
+
 To change the chatbot later, click it in **Workspace → Models**. Your instructions are folded:
 click them (or **Show more**) to open them. To replace them, click in the box, select everything
 (`Ctrl+A`, `Cmd+A` on a Mac), and paste the new version. Then click **Save & Update**, at the bottom
@@ -869,8 +886,8 @@ The command writes one `.zip` file per chatbot in the folder `exports/`, for exa
 `exports/summer-camp-fire-rules.zip`. Inside, you find the two boxes of every chatbot tool:
 `instructions.md` (the System Prompt) and the folder `knowledge/` (your documents, as you uploaded
 them). The file `openwebui.json` keeps the rest: name, description, base model, starter questions,
-the switches of **Capabilities** such as **Memory**, and the image. A `README.md` explains how to
-rebuild it. The participants' accounts and conversations are **not** in it, on purpose: they stay in
+the switches of **Capabilities** such as **Memory**, and the image. The folder `skills/` holds the
+skills attached to the chatbot, one `SKILL.md` each. A `README.md` explains how to rebuild it. The participants' accounts and conversations are **not** in it, on purpose: they stay in
 the Codespace and go away with it (see [The participants' data](#the-participants-data)).
 
 Then keep the file on your computer: in the VS Code tab, open the folder `exports/` in the file
@@ -887,16 +904,26 @@ drag the `.zip` file from your computer onto the file list of VS Code (a file ma
 openwebui import summer-camp-fire-rules.zip
 ```
 
-The command creates the knowledge base with the documents, then the chatbot with all its settings,
-and ends with `Imported: "Summer camp - fire rules", with 3 documents.` If a chatbot with the same
-name is already there, it is replaced. Like a new chatbot, it is not open to the participants yet:
+The command creates the knowledge base with the documents, then the chatbot with its settings,
+and ends with `Imported: "Summer camp - fire rules", with 3 documents.` Under **Builtin Tools**, it
+keeps only **Knowledge Base**, **Memory**, **Time & Calculation** and **Ask User** (fewer if you had
+turned some off before the export). Its workspace tools and filters are not imported; its skills
+come back from the folder `skills/` of the file, attached to it. If a chatbot with the same name is
+already there, it is replaced. Like a new chatbot, it is not open to the participants yet:
 in a session, `openwebui share open` gives it to them. Test it first ([part 3](#part-3---test-before-you-open)):
 two or three questions show whether it finds its documents.
+
+> [!IMPORTANT]
+> **A file that comes from someone else**: open its folder `skills/` and read each `SKILL.md` before
+> you import it. Its skills go with every message of the chatbot, and the import names them on the
+> screen without showing their text.
 
 **The chatbot of the series, too.** `openwebui import` also takes the file made by
 `chatbot-export` at the end of [the series](https://github.com/Youth-AI-Lab/yal-workshop-kit)
 (workshop 5): the chatbot you built during the workshops comes into your Open WebUI, with its
-instructions and its documents. Its instructions were written for the workshops, not for a group:
+instructions, its documents (the wiki with its map, `wiki__index.md`) and the skills you wrote. Under
+**Builtin Tools**, it keeps only **Knowledge Base**. The live tool of workshop 4 does not come: it
+is a program, not a document, and this guide has no live tool. Its instructions were written for the workshops, not for a group:
 before you open it to young people, add the **Sources** and **Never** sections of a template
 (part 2, step 2), and test it ([part 3](#part-3---test-before-you-open)).
 
