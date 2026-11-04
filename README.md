@@ -513,7 +513,7 @@ costs a question. With your own questions, the young people see at once what the
 and those who do not know what to ask have a way in.
 
 Your chatbot now appears in the list of **Workspace → Models**, and in the list of models of the
-message box, on **New Chat**. The other settings of the page can stay as they are: by default, Open WebUI lets the
+message box, on **New Chat**. The other settings of the page can stay as they are, except three switches (below): by default, Open WebUI lets the
 chatbot search its knowledge by itself, which is what you want. (The other way, **Legacy**, in
 **Advanced Params → Function Calling**, makes Open WebUI search before each answer and give the
 passages to Claude: Claude does not choose them. It is how the chatbot "Wildfire RAG" of workshop 2
@@ -521,6 +521,13 @@ of the series works, and the setting that the local AI guide uses for small mode
 under **Builtin Tools**. The one under **Capabilities** is enough: when you turn it off, the second
 one disappears. To turn **Memory** off after creating the chatbot, open it again in
 **Workspace → Models**, turn the switch off and click **Save & Update**.
+
+**Three switches to turn off.** Open WebUI also gives every new chatbot tools that the young people
+do not need. Open the chatbot again in **Workspace → Models**, click the row **Builtin Tools** and
+turn off **Chat History** (it lets the chatbot search and read the participant's other
+conversations), **Task Management** (task lists in a chat) and **Skills** (it reads the skills of
+your Open WebUI and, when you test the chatbot yourself, can write new ones). Keep
+**Knowledge Base** on: it is how the chatbot searches its documents. Then click **Save & Update**.
 
 To change the chatbot later, click it in **Workspace → Models**. Your instructions are folded:
 click them (or **Show more**) to open them. To replace them, click in the box, select everything
