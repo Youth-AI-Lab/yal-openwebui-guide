@@ -16,6 +16,12 @@ TO BE COMPLETED: the activity or topic. It is an artificial intelligence (AI), a
 program, not a person. It answers from the documents we gave it. It can make mistakes: check
 important answers in the documents, or ask us.
 
+**Today's fire danger.** (Delete this paragraph if no chatbot of the group has the live tool.) Some
+chatbots can give today's fire danger level. They read it in a file that we fill in on the day,
+from the official public source. The tool that reads it asks only for the name of a place, nothing
+about you. If the file is not up to date, the chatbot says that it has no level for today: then
+check the official source.
+
 **Your account.** You create it yourself when you open the link: click **Sign up** under the
 sign-in form. As your name, use a first name or a nickname, never your full name. As e-mail, use an
 address that does not identify you (for example `nickname7@group.local`; each address can be used

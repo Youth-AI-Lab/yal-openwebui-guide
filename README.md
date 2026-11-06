@@ -291,7 +291,7 @@ next times, about **1 minute**. It ends with a frame like this one:
 ========================================================================
 ```
 
-![The terminal after the first openwebui start (the download lines of the very first time are not shown): the address, the e-mail and the password to sign in (the password is hidden here)](images/terminal-start.png)
+![The terminal after the first openwebui start (the download lines of the very first time are not shown): the file of the live tool made from the template, its check with the frame WARNING (no date yet), then the address, the e-mail and the password to sign in (the password is hidden here)](images/terminal-start.png)
 
 From version 2026.11.8 of the Codespace image, the command also writes, before this frame, a few
 lines about the **live tool** (today's fire danger), then a frame **WARNING: the live tool (today's
@@ -966,7 +966,7 @@ delete it, then type `openwebui start`, which makes a new file from the template
 Open WebUI uses the **port 3000**: think of it as its door to the internet. For now, only you can
 open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". Do what it says:
 
-![The terminal after openwebui share open: sign-ups are open, the list of the chatbots the participants can use, and the frame "YOUR TURN" with the four steps](images/terminal-your-turn.png)
+![The terminal after openwebui share open: sign-ups are open, the list of the chatbots the participants can use, the check of the live tool (here its file has no date yet, hence the frame WARNING), and the frame "YOUR TURN" with the four steps](images/terminal-your-turn.png)
 
 1. At the bottom of the window, click the **Ports** tab, next to **Terminal**
 2. Right-click on the line **Open WebUI** (port 3000)
