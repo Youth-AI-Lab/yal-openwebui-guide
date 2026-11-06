@@ -697,8 +697,10 @@ sources. Read-only." (set by the command, not yet seen on screen).
 > answered "The file is dated YYYY-MM-DD, not today", with no level; with the file dated that day
 > and La Rochelle `live`, it gave the level. In that test the tool was ticked through Open WebUI's
 > programming interface, not on the screen: the row **Tools**, the label **Fire danger today** and
-> what the participants see under the message box were not looked at in a browser. Not tried
-> either: a real model, a real Codespace, a group.
+> what the participants see under the message box were not looked at in a browser. Then, the same
+> day, in a real Codespace of this guide with the real model (Claude Sonnet 5.5), the port kept
+> private: a participant's account saw the tool, and the chatbot called it and answered in 5 seconds.
+> Not tried: the screen, a session with the port public, a group.
 
 ---
 
