@@ -213,10 +213,15 @@ kept nothing, and none runs in Europe: they are not for a group of young people.
 
 > [!NOTE]
 > Tested on 1 November 2026: the Open WebUI of the workshops (v0.12.4, no accounts) with Mistral
-> Small through OpenRouter answered 11 questions in 44 s, without an error. In the mode of this
-> guide, with accounts, `openwebui start` was tried against a fake OpenRouter only. **Not tested**:
-> a real answer in this mode, `openwebui share open` with this key, `deepseek/deepseek-v4-flash` and
-> `mistralai/mistral-small-2603` in Open WebUI, and a group.
+> Small through OpenRouter answered 11 questions in 44 s, without an error. The same day, with
+> `workshop-login --europe` and a real key, the mode of this guide ran `openwebui start` and
+> `openwebui share open` without the warning about servers outside Europe, and each of its two base
+> models answered one real question, sent by the API with the administrator account. With
+> `deepseek/deepseek-v4-flash`, the model without `--europe`, the Open WebUI of the workshops answered
+> the 11 questions of `replay RAG` on 2 and 5 November 2026. On 5 November, a chatbot built by
+> `openwebui chatbot` used the right tools on 4 questions, and answered one in French to a question
+> asked in English. **Not tested**: the mode of this guide with
+> `deepseek/deepseek-v4-flash`, participants in a browser, a real Codespace, and a group.
 
 ---
 
