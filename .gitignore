@@ -4,3 +4,7 @@
 # On your own computer (dev container), /workspaces cannot be written: the administrator account is
 # then kept here, and never committed.
 .openwebui-class/
+# The live tool's data of the day (today's fire danger), made by the first openwebui start from the image's
+# template and filled in by you on the day of a session: your own copy, never committed (a fork's copy would
+# give its data to your chatbots; openwebui share open warns if git tracks it).
+mcp/fire-danger.json

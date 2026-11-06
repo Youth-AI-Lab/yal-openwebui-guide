@@ -293,6 +293,12 @@ next times, about **1 minute**. It ends with a frame like this one:
 
 ![The terminal after the first openwebui start (the download lines of the very first time are not shown): the address, the e-mail and the password to sign in (the password is hidden here)](images/terminal-start.png)
 
+From version 2026.11.8 of the Codespace image, the command also writes, before this frame, a few
+lines about the **live tool** (today's fire danger), then a frame **WARNING: the live tool (today's
+fire danger)** that says its file "has no date yet". This is expected: you fill in that file only on
+the day of a session ([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)). The frame
+comes back at each `openwebui start` until the file is dated that day.
+
 **Copy the password now** into your password manager, or write it on paper. Then type `clear` and
 press Enter: the password disappears from the terminal. The command shows it only this first time,
 because later you may project your terminal during a session.
@@ -373,7 +379,8 @@ quality of a chatbot depends so much on two things you control: clear documents,
 instructions.
 
 You build the chatbot in four steps: gather the documents, write the instructions, create the
-chatbot, and try it.
+chatbot, and try it. A fifth step, if you want it, gives the chatbot a **live tool**: today's
+official wildfire danger level, which no document can hold.
 
 ### Step 1 - Gather your documents (knowledge)
 
@@ -546,10 +553,11 @@ by `openwebui import` (part 6), with a test model; attaching one by hand in the 
 
 > [!NOTE]
 > In the Codespaces of [the series](https://github.com/Youth-AI-Lab/yal-workshop-kit),
-> `openwebui chatbot --name "…" --rag` makes a chatbot with the **Legacy** setting above, and the
-> chatbot of workshops 4 and 5 also gets a live tool (`fire_danger`, read-only). Both exist only there, in an
-> Open WebUI without accounts: this guide has neither the command nor the live tool. Here, choose
-> **Legacy** by hand if you want it.
+> `openwebui chatbot --name "…" --rag` makes a chatbot with the **Legacy** setting above. That
+> command exists only there, in an Open WebUI without accounts: here, choose **Legacy** by hand if
+> you want it. The live tool of workshop 4 of the series (`fire_danger`, read-only) is here too,
+> from version 2026.11.8 of the Codespace image: see
+> [step 5](#step-5---add-the-live-tool-todays-fire-danger).
 
 To change the chatbot later, click it in **Workspace → Models**. Your instructions are folded:
 click them (or **Show more**) to open them. To replace them, click in the box, select everything
@@ -585,6 +593,112 @@ selected in step 3, and that your instructions keep the **Sources** section.
 If something is not as you want it, change your instructions in your file, paste them again into
 the chatbot (step 3, **Save & Update**), and ask again **in a new chat**, so that the earlier
 answers do not influence the new ones. Part 3 gives a method to test it more seriously.
+
+### Step 5 - Add the live tool (today's fire danger)
+
+"Can we go to the forest today?" is a question young people ask, and no document can answer it:
+the official level changes every day. The **live tool** gives it to the chatbot. It is a small
+program in your Codespace that reads one file, `mcp/fire-danger.json`, which you fill in on the
+morning of a session from the public source of your territory. The chatbot calls it when a
+question is about today. It is the tool of
+[workshop 4 of the series](https://github.com/Youth-AI-Lab/yal-workshop-tools), with two functions:
+`fire_danger` (today's level of one territory) and `territories` (the list of the file). This step
+is optional: a chatbot without the tool answers from its documents only.
+
+> [!NOTE]
+> The live tool comes with version **2026.11.8** of the Codespace image, or a later one. To check
+> the version your Codespace was made with, type `ls /opt/workshop/fire-danger` in the terminal: if
+> the folder exists, your Codespace has the live tool. (The line `"image"` of
+> `.devcontainer/devcontainer.json` gives the version the repository asks for, which a Codespace made
+> before a change keeps not.) A Codespace made with an older version has no live tool: export your
+> chatbots ([part 6](#part-6---keep-your-chatbots)), then create a new Codespace.
+
+**What it can do.** It only reads your file. It cannot write anything, it has no way out to the
+internet and no door open to it, and it answers only to a secret token that your Open WebUI holds.
+It is set to
+receive only the name of a territory that the model chose, not the participants' accounts (see
+[The participants' data](#the-participants-data)).
+
+**1. Fill in the file, on the day of the session.** The first `openwebui start` made the file
+`mcp/fire-danger.json` from a template, and said so (`Live tool: mcp/fire-danger.json was made from
+the template.`). It never replaces it after that. Open it from the file list of VS Code, in the
+folder `mcp/`. It has the five territories of the Youth AI Lab project. Four of them have their
+official `source` and their `scale`, already checked. Naples (Campania) has none: no public daily page
+was found, so write `no-level-shown` there, or fill in `scale` and `source` yourself from an official
+source. For your territory:
+
+1. In the morning, open the page given in `source`.
+2. Set `status` to one of three words: `live` (the source shows a level today), `season-over` (the
+   source says the fire season is over) or `no-level-shown` (the source shows no level today).
+3. With `live`, copy today's level into `level`, as the source writes it.
+4. Copy the source's own sentence about today into `source_says`, and its advice into `advice`, one
+   line each. Copy only what the public source says: never a name, a phone number, the place or the
+   time of your group, or anything about a participant. Every account can read this file through
+   the tool.
+5. At the top, set `date` to the day of the session, written year-month-day (for example
+   `2026-11-20`), and save with `Ctrl+S` (`Cmd+S` on a Mac).
+
+Here is the shape, shortened. The parts in square brackets are what you copy from the source:
+
+```json
+{
+  "date": "2026-11-20",
+  "territories": {
+    "La Rochelle - Charente-Maritime, France": {
+      "status": "live",
+      "level": "[today's level, as the source writes it]",
+      "source_says": "[the source's own sentence about today]",
+      "scale": "6 vigilance levels: FAIBLE (blue), …",
+      "source": "Préfecture de la Charente-Maritime (DDTM), https://www.risque-prevention-incendie.fr/17",
+      "advice": [
+        "[one piece of advice of the source]"
+      ]
+    }
+  }
+}
+```
+
+Leave the other territories as they are: they stay "not filled in" and give no level. If the source
+shows no level today, write `no-level-shown` and its sentence: a chatbot that says there is no
+level, and why, gives the right answer. Never copy a level from another index or from a weather
+forecast.
+
+**The date rule.** The tool gives a level only when the file is dated **today**, counted in Paris
+time (the same as in Spain, Italy and Belgium), and the status is `live`. On any other day, or with
+another status, it tells the chatbot that there is no level today, and why. A file of yesterday
+never gives yesterday's level as today's: fill it in again on each day of a session. If a comma or a
+quote is missing, the tool tells the chatbot that the file is malformed, and `openwebui share open`
+warns you, with the line and the column ([part 5](#during-the-session)).
+
+**Your file stays in your Codespace.** It is listed in `.gitignore`, so git does not keep it. If the
+repository you opened already tracks one (a copy of this guide made by someone else), `openwebui
+share open` warns you: that file gives its own data to your chatbots, so read every line against the
+public source.
+
+**2. Tick the tool in the chatbot.** In **Workspace → Models**, click your chatbot, click the row
+**Tools**, tick **Fire danger today**, then click **Save & Update**. Do it for each chatbot that
+should give today's level: one file serves all of them.
+
+**3. Try it.** Fill in your territory with today's date. Click **New Chat**, choose the chatbot and
+ask "What is the fire danger level today in La Rochelle?", with your territory, named as in the file.
+If the model calls the tool, a line **View Result from fire-danger_fire_danger** appears above the
+answer: click it to see what the tool sent back. Then ask a question about the rules (what is
+forbidden, the fines): the chatbot should answer it from its documents, not from the tool.
+
+**What the participants see.** After `openwebui share open`, each participant's account can use the
+tool in the chatbots where you ticked it and, from the message box, in any chatbot they can use (see
+[Limits to know](#limits-to-know)). Under the message box, Open WebUI should show the name **Fire danger today** and
+the sentence "Today's official wildfire danger level, filled in by your facilitator from public
+sources. Read-only." (set by the command, not yet seen on screen).
+
+> [!NOTE]
+> Measured on 2026-11-06, once, with Open WebUI 0.12.5, without internet, with a test model that
+> always calls the tool: a participant's account received the tool; with the template, the tool
+> answered "The file is dated YYYY-MM-DD, not today", with no level; with the file dated that day
+> and La Rochelle `live`, it gave the level. In that test the tool was ticked through Open WebUI's
+> programming interface, not on the screen: the row **Tools**, the label **Fire danger today** and
+> what the participants see under the message box were not looked at in a browser. Not tried
+> either: a real model, a real Codespace, a group.
 
 ---
 
@@ -639,8 +753,11 @@ one level further, no more.
 **Finally, test as a participant.** Type `openwebui share open` and follow what it says (see
 [part 5](#part-5---open-it-to-your-group)). Open the link in a **private window** (`Ctrl+Shift+N`
 in Chrome, `Ctrl+Shift+P` in Firefox), sign up as `test@group.local`, ask one question, and check
-that the answer names a document. Then type `openwebui share close`. This is the only way to see
-what the participants will see.
+that the answer names a document. If a chatbot has the live tool
+([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)), ask it also for today's level in
+your territory: when the participants cannot use the tool, nothing on the screen says so, and only
+this test shows it. Then type `openwebui share close`. This is the only way to see what the
+participants will see.
 
 ---
 
@@ -740,6 +857,13 @@ conversations. It is on by default in each chatbot (**Capabilities → Memory**)
 your activity needs it, and say it in the notice if you keep it. If the notice says that the
 chatbots remember nothing, turn it off in each new chatbot too.
 
+**The live tool** ([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)) reads only
+your file, with public data and no personal data. It receives only the name of a territory, chosen
+by the model; the command sets Open WebUI not to send it the participant's name or e-mail (a setting
+read in Open WebUI's code; what the tool receives was not recorded in our test). It has no way out
+to the internet. In our test, its secret token appeared in no answer that a participant received,
+and not in the log of Open WebUI.
+
 **Who can read what.** As the administrator, you can read the participants' conversations; they
 cannot read each other's. Never give a participant the administrator role. Participants sign up
 with a first name or a nickname, never their full name, and an e-mail that does not identify them.
@@ -793,7 +917,8 @@ chatbots of this group ([part 4](#part-4---one-chatbot-per-topic-activity-or-pro
 created or changed a chatbot since the last session, do the participant test of
 [part 3](#part-3---test-before-you-open) again. Check also the spending limit of your workspace
 (OpenRouter: the **Credit limit** of the key, and the [warning](#or-an-openrouter-key) on young
-people).
+people). If a chatbot has the live tool, fill in `mcp/fire-danger.json` that morning, with the
+day's date ([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)).
 
 ### During the session
 
@@ -803,6 +928,38 @@ openwebui share open
 
 The command lets the participants sign up, and gives them access to your active chatbots and to
 their documents. Then it makes sure the link can be opened from outside.
+
+**The live tool, checked.** From version 2026.11.8 of the Codespace image, `openwebui share open`
+also checks the live tool, before the steps on the port ([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)). It
+writes one line on the tool and one line per status, with the names of the territories, for
+example:
+
+```
+Live tool "Fire danger today": answers. Its file mcp/fire-danger.json: dated 2026-11-20 (today).
+  live: La Rochelle - Charente-Maritime, France
+  not filled in: Aix-en-Provence - Bouches-du-Rhône, France, Barcelona - Catalonia, Spain, …
+```
+
+It checks that the participants can use the tool, that the tool answers through Open WebUI, that
+the file can be read and has the right shape, that it is dated today, that each status is one of
+the three words, that each `live` territory has a level, and that git does not track the file. It
+never shows the rest of the file: only its date, the statuses and the names. When something is
+wrong, a frame **WARNING: the live tool (today's fire danger)** says what, for example:
+
+```
+========================================================================
+ WARNING: the live tool (today's fire danger)
+
+   - mcp/fire-danger.json is dated 2026-11-05, not today (2026-11-06): the tool says there is no level today.
+========================================================================
+```
+
+The session opens anyway: the chatbots then answer without today's level. Fix the file, save it: the
+tool reads it again at each question, so nothing needs to restart. `openwebui share status` shows
+the same check at any time. One case switches the tool off: `mcp/` or `mcp/fire-danger.json` is a
+link, or is not a plain folder or file, which the command never follows. The command then goes on
+without the live tool, and a frame **WARNING: the live tool (today's fire danger) is off** says so:
+delete it, then type `openwebui start`, which makes a new file from the template.
 
 Open WebUI uses the **port 3000**: think of it as its door to the internet. For now, only you can
 open it. If the command cannot open it by itself, it shows a frame "YOUR TURN". Do what it says:
@@ -892,7 +1049,9 @@ The command writes one `.zip` file per chatbot in the folder `exports/`, for exa
 `instructions.md` (the System Prompt) and the folder `knowledge/` (your documents, as you uploaded
 them). The file `openwebui.json` keeps the rest: name, description, base model, starter questions,
 the switches of **Capabilities** such as **Memory**, and the image. The folder `skills/` holds the
-skills attached to the chatbot, one `SKILL.md` each. A `README.md` explains how to rebuild it. The participants' accounts and conversations are **not** in it, on purpose: they stay in
+skills attached to the chatbot, one `SKILL.md` each. A `README.md` explains how to rebuild it. If the
+chatbot has the live tool, `openwebui.json` notes it, but the file holds neither the tool (a program)
+nor your `mcp/fire-danger.json`. The participants' accounts and conversations are **not** in it, on purpose: they stay in
 the Codespace and go away with it (see [The participants' data](#the-participants-data)).
 
 Then keep the file on your computer: in the VS Code tab, open the folder `exports/` in the file
@@ -914,7 +1073,10 @@ and ends with `Imported: "Summer camp - fire rules", with 3 documents.` Under **
 keeps only **Knowledge Base**, **Memory**, **Time & Calculation** and **Ask User** (fewer if you had
 turned some off before the export). Its workspace tools and filters are not imported; its skills
 come back from the folder `skills/` of the file, attached to it. If a chatbot with the same name is
-already there, it is replaced. Like a new chatbot, it is not open to the participants yet:
+already there, it is replaced. A file never switches the live tool on: if the chatbot had it, the
+command says so in one line, `This chatbot used the live tool: tick Fire danger today in Workspace
+-> Models -> Summer camp - fire rules -> Tools`, and you tick it yourself
+([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)). Like a new chatbot, it is not open to the participants yet:
 in a session, `openwebui share open` gives it to them. Test it first ([part 3](#part-3---test-before-you-open)):
 two or three questions show whether it finds its documents.
 
@@ -927,8 +1089,11 @@ two or three questions show whether it finds its documents.
 `chatbot-export` at the end of [the series](https://github.com/Youth-AI-Lab/yal-workshop-kit)
 (workshop 5): the chatbot you built during the workshops comes into your Open WebUI, with its
 instructions, its documents (the wiki with its map, `wiki__index.md`) and the skills you wrote. Under
-**Builtin Tools**, it keeps only **Knowledge Base**. The live tool of workshop 4 does not come: it
-is a program, not a document, and this guide has no live tool. Its instructions were written for the workshops, not for a group:
+**Builtin Tools**, it keeps only **Knowledge Base**. The live tool of workshop 4 is not in the file
+(it is a program, not a document), and the file does not say that the chatbot used it. To give it
+back, tick **Fire danger today** in the chatbot
+([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)): it then reads your own
+`mcp/fire-danger.json`, never the file of the workshop. Its instructions were written for the workshops, not for a group:
 before you open it to young people, add the **Sources** and **Never** sections of a template
 (part 2, step 2), and test it ([part 3](#part-3---test-before-you-open)).
 
@@ -982,6 +1147,12 @@ base.** The command `openwebui` sets them each time it starts Open WebUI, includ
 and private chatbots are not kept. To choose what a group sees, use the on/off switch of each
 chatbot ([part 4](#part-4---one-chatbot-per-topic-activity-or-project)).
 
+**The live tool is open to every account, not to one chatbot.** You tick it in the chatbots that
+should use it, but Open WebUI also lets a participant switch it on or off under the message box, in
+any chatbot they can use (read in Open WebUI's code, not tried). It only ever reads your file, with
+public data. Nothing checks what you copied: a level written in the wrong territory, or with the
+wrong status, goes to the chatbot as it is. Read your lines against the source before each session.
+
 **The Codespace is not a server.** It stops after its idle timeout (4 hours at most) and
 [runs 12 hours at most in a row](https://docs.github.com/en/codespaces/about-codespaces/understanding-the-codespace-lifecycle). For a chatbot open all week, ask the IT people of your organisation for a
 server, or see the [local AI guide](https://github.com/Youth-AI-Lab/yal-local-ai-guide): a computer
@@ -1000,11 +1171,11 @@ Type them in the terminal of the Codespace.
 | `openwebui password` | shows your e-mail and password (**never on the projector**) |
 | `openwebui share open` | during a session: participants can sign up and use your chatbots; shows the link and a QR code |
 | `openwebui share close` | after the session: no more sign-ups; helps you make the link private again |
-| `openwebui share status` | sign-ups open or closed, link public or private, number of accounts |
+| `openwebui share status` | sign-ups open or closed, link public or private, number of accounts; the live tool: does it answer, the date of its file |
 | `openwebui export` | writes one `.zip` file per chatbot in `exports/`, to keep on your computer |
 | `openwebui import FILE` | rebuilds a chatbot from such a file, or from `chatbot-export` of the series |
 | `openwebui stop` | stops Open WebUI (your data is kept) |
-| `openwebui reset` | deletes everything in Open WebUI (asks you to confirm) |
+| `openwebui reset` | deletes everything in Open WebUI (asks you to confirm); keeps `mcp/fire-danger.json` |
 | `openwebui help` | the list of commands |
 | `clear` | empties the terminal, for example before you project it |
 
@@ -1056,6 +1227,38 @@ not help, start again from zero, which deletes your chatbots: `openwebui reset`,
 If a participant sees "Model not found", or a chatbot answers without quoting its documents, type
 `openwebui share open` again: it gives the participants access to the chatbots and documents
 created since the last time.
+
+### The chatbot does not give today's level
+
+First type `openwebui share status` and read its lines on the live tool
+([part 5](#during-the-session)). Then, depending on what you see:
+
+- **"no level today", or `is dated …, not today`**: the file is not dated today, or your territory
+  is not `live`. This is the tool doing its job: fill in the file
+  ([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)) and save it.
+- **`Participants cannot use the live tool (it is open to you only)`**, or **`Open WebUI was started
+  without the live tool`**: type `openwebui start`
+  (your chatbots and accounts are kept). This one is **silent** for the participants: the chatbot
+  answers without the tool, with no error, while it still works for you. In our test, a participant
+  account then saw no tool at all. Only the check of the command, or the participant test of
+  [part 3](#part-3---test-before-you-open), shows it.
+- **`The live tool does not answer`**, or `! The live tool fire-danger could not start, so your
+  chatbots answer without it.` at `openwebui start`: the lines under it give the end of the error.
+  Type `openwebui start` again; if it comes back, this Codespace's image may be older than 2026.11.8
+  or damaged: export your chatbots, then create a new Codespace. (A wrong `mcp/fire-danger.json`
+  cannot stop the tool from starting: it reads the file at each question.) While the tool is down, Open WebUI shows a line "Failed to connect to MCP
+  server 'fire-danger'" with the answer (read in Open WebUI's code, not tried).
+- **`WARNING: the live tool (today's fire danger) is off`**: `mcp/` or `mcp/fire-danger.json` is a
+  link, or not a plain folder or file. Delete it, then type `openwebui start`.
+- **`it is not valid JSON (line …, column …)`**: a comma or a quote is missing near that line.
+  VS Code usually marks the place with a red wavy line (its usual behaviour, not checked in this
+  Codespace).
+- **`Unknown status`** or **`Status live but no level`**: write `live`, `season-over` or
+  `no-level-shown` exactly, in small letters, and with `live`, fill in `level`.
+- **No warning at all**: check that **Fire danger today** is ticked in the chatbot
+  ([part 2, step 5](#step-5---add-the-live-tool-todays-fire-danger)), and that the question is about
+  **today** and names the territory as the file writes it. A question about the rules is answered
+  from the documents, not by the tool.
 
 ### A participant forgot their password
 
